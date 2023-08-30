@@ -1,14 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Click : MonoBehaviour
+public class ClickS : MonoBehaviour
 {
     bool inside;
     Collider2D collisedObjectCollider;
-    private TMP_Text m_TextComponent;
+    private TMP_Text text;
     public GameObject scoreObject;
     int score;
 
@@ -17,37 +18,37 @@ public class Click : MonoBehaviour
     {
         inside = false;
         score = 0;
-        m_TextComponent = scoreObject.GetComponent<TMP_Text>();
-        if (m_TextComponent != null) Debug.Log(m_TextComponent.name);
+        text = scoreObject.GetComponent<TMP_Text>();
+        if (text != null) Debug.Log(text.name);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) && inside == true){
-          Debug.Log(score);
+        if (Input.GetKeyDown(KeyCode.S) && inside == true){
+          score = Int32.Parse(text.text);
           score = score + 5;
-          m_TextComponent.text=(""+score);
+          text.text=(""+score);
           Destroy(collisedObjectCollider.gameObject);
           collisedObjectCollider=null;
           inside=false;
-        } else if(Input.GetKeyDown(KeyCode.A) && inside == false){
+        } else if(Input.GetKeyDown(KeyCode.S) && inside == false){
             score = score -1;
-            m_TextComponent.text=(""+score);
+            text.text=(""+score);
         }
 
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        inside = true;
+        if(other.tag=="S")inside = true;
         collisedObjectCollider=other;
     }
 
 
     void OnTriggerExit2D(Collider2D other)
     {
-        inside = false;
+        if(other.tag=="S")inside = false;
         collisedObjectCollider=null;
     }
 
