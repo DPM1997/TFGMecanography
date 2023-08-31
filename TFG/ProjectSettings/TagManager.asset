@@ -29,6 +29,7 @@ TagManager:
   - I
   - O
   - P
+  - D
   layers:
   - Default
   - TransparentFX
