@@ -1154,7 +1154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a: {fileID: 5628549679769103398, guid: 3528808b35b11634cbb4f482182c502e, type: 3}
-  s: {fileID: 8497486419723620991, guid: 6dded4318412fc2448989568b014271e, type: 3}
   topScreen: {fileID: 581103601}
   downspeed: 0.1
 --- !u!1 &1983749641

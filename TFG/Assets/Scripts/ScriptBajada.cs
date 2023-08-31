@@ -8,6 +8,7 @@ public class ScriptBajada : MonoBehaviour
 {
     public GameObject a;
     private GameObject s;
+    private GameObject d;
     public GameObject topScreen;
     private GameObject movingObject;
     public float downspeed;
@@ -19,6 +20,8 @@ public class ScriptBajada : MonoBehaviour
     void Start()
     {
         s = (GameObject)Resources.Load("GameObjects/Letras/S");
+        d = (GameObject)Resources.Load("GameObjects/Letras/D");
+
         StartCoroutine(CreateObject());
     }
 
