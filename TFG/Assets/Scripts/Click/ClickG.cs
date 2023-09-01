@@ -19,7 +19,6 @@ public class ClickG : MonoBehaviour
         inside = false;
         score = 0;
         text = scoreObject.GetComponent<TMP_Text>();
-        if (text != null) Debug.Log(text.name);
     }
 
     // Update is called once per frame

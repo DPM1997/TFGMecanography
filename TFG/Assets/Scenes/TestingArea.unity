@@ -3179,9 +3179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb9cc21d71af2249970e67a33aa7ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a: {fileID: 5628549679769103398, guid: 3528808b35b11634cbb4f482182c502e, type: 3}
   topScreen: {fileID: 581103601}
   downspeed: 0.1
+  randomMode: 0
 --- !u!1 &1931325920
 GameObject:
   m_ObjectHideFlags: 0
