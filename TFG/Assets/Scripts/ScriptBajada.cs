@@ -61,6 +61,7 @@ public class ScriptBajada : MonoBehaviour
         if (randomMode){
             if(randomModeMusic){
                 backgroundMusic = (AudioClip)Resources.Load("Music/RandomLevel-38");
+                Debug.Log(backgroundMusic);
                 spawningSpeed=1.6f;
                 SoundFXScript.instance.PlayAudio(backgroundMusic, 1f);
             }

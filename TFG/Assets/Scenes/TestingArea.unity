@@ -3252,6 +3252,7 @@ MonoBehaviour:
   topScreen: {fileID: 581103601}
   downspeed: 0.1
   randomMode: 1
+  randomModeMusic: 1
   levelPath: ./Assets/Levels/level.csv
 --- !u!114 &1914751114
 MonoBehaviour:
