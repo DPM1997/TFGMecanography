@@ -10,6 +10,7 @@ public class ClickA : MonoBehaviour
     bool inside;
     Collider2D collisedObjectCollider;
     private TMP_Text text;
+    [SerializeField] private AudioClip hitAudio; 
     public GameObject scoreObject;
     int score;
 
@@ -29,6 +30,8 @@ public class ClickA : MonoBehaviour
           score = score + 5;
           text.text=(""+score);
           Destroy(collisedObjectCollider.gameObject);
+          //ReproducirSonido
+          SoundFXScript.instance.CorrectHit(hitAudio,1f);
           collisedObjectCollider=null;
           inside=false;
         } else if(Input.GetKeyDown(KeyCode.A) && inside == false){

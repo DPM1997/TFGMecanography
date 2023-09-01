@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3b09e2231b3d054bb50fa041d65912d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &131484659
 BoxCollider2D:
@@ -259,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 107814dc63572dd47850d3203b8081fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &154748410
 BoxCollider2D:
@@ -484,6 +486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 843941e4122cc694ca6644703d04e82f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &214938787
 BoxCollider2D:
@@ -620,6 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8cb48bdbef5288488fa0b4af1a05800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!1 &429610152
 GameObject:
@@ -666,6 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a38ca85bb8229c5418c2ebf66c5810dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &429610155
 BoxCollider2D:
@@ -788,6 +793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695afa8cef60e3c4aa038247e9e70041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &603930702
 BoxCollider2D:
@@ -983,6 +989,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreObject: {fileID: 212292657}
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
 --- !u!61 &622734652
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1118,6 +1125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef31a537d1c68e43be9f1eba760dee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!1 &665955335
 GameObject:
@@ -1164,6 +1172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab1de27b8b9d7d148bbec6cfb199f935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &665955338
 BoxCollider2D:
@@ -1417,6 +1426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a497ffa655f8ae343b0dc3fa0d523afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!1 &1006964812
 GameObject:
@@ -1463,6 +1473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e613ea85e76f91469b7b1760b0d1362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &1006964815
 BoxCollider2D:
@@ -1673,6 +1684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a4ece0bc73c3304e99f8e4a7391c8cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &1139158029
 BoxCollider2D:
@@ -1828,6 +1840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e62f1fcaff29c2843903625a656761a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &1152084444
 BoxCollider2D:
@@ -1919,6 +1932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aff8f505239838f43bbb10929cb2f4e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &1236086354
 BoxCollider2D:
@@ -2055,6 +2069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30bb3f3cf45ee7a4eae90f5b62d35195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!1 &1280836649
 GameObject:
@@ -2280,6 +2295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96216d514c349a6489d15bb728fbfdbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!1 &1303958855
 GameObject:
@@ -2326,6 +2342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15dbd393e1f379b4ca84430927399b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &1303958858
 BoxCollider2D:
@@ -2417,6 +2434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9e77a63eea20c44bd735af4d900fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &1389341211
 BoxCollider2D:
@@ -2508,6 +2526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d068abc5209314baba4b4b45dab505, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &1406913285
 BoxCollider2D:
@@ -2599,6 +2618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8926aace8404d54babbdd1cf378fb29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &1427851572
 BoxCollider2D:
@@ -2782,6 +2802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecea6784ce57ff341994473bc555e1fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &1545223405
 BoxCollider2D:
@@ -2873,6 +2894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa729f3335980a04fb88008d6b87f71f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &1721712361
 BoxCollider2D:
@@ -3032,6 +3054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8154f3d57f838e47b47d86f91866016, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &1802482614
 BoxCollider2D:
@@ -3145,6 +3168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1914751112}
   - component: {fileID: 1914751113}
+  - component: {fileID: 1914751114}
   m_Layer: 0
   m_Name: ScriptingObject
   m_TagString: Untagged
@@ -3181,7 +3205,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topScreen: {fileID: 581103601}
   downspeed: 0.1
-  randomMode: 0
+  randomMode: 1
+--- !u!114 &1914751114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914751111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb6e54750c7b478418a6755b0f299ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1931325920
 GameObject:
   m_ObjectHideFlags: 0
@@ -3272,6 +3308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef7e073b81fd5294fbc36c15e51cc59c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!1 &1983749641
 GameObject:
@@ -3402,6 +3439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a32164e6e5a23044a2e60289a51ee81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!61 &2015533767
 BoxCollider2D:
@@ -3538,6 +3576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2213933c9df4a7343bb585c9ee6fcde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   scoreObject: {fileID: 212292657}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

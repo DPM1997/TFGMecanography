@@ -10,6 +10,7 @@ public class ClickZ : MonoBehaviour
     bool inside;
     Collider2D collisedObjectCollider;
     private TMP_Text text;
+    [SerializeField] private AudioClip hitAudio; 
     public GameObject scoreObject;
     int score;
 
@@ -29,6 +30,7 @@ public class ClickZ : MonoBehaviour
           score = score + 5;
           text.text=(""+score);
           Destroy(collisedObjectCollider.gameObject);
+          SoundFXScript.instance.CorrectHit(hitAudio,1f);
           collisedObjectCollider=null;
           inside=false;
         } else if(Input.GetKeyDown(KeyCode.Z) && inside == false){

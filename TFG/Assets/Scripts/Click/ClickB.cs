@@ -11,6 +11,7 @@ public class ClickB : MonoBehaviour
     Collider2D collisedObjectCollider;
     private TMP_Text text;
     public GameObject scoreObject;
+    [SerializeField] private AudioClip hitAudio; 
     int score;
 
     // Start is called before the first frame update
@@ -29,6 +30,7 @@ public class ClickB : MonoBehaviour
           score = score + 5;
           text.text=(""+score);
           Destroy(collisedObjectCollider.gameObject);
+          SoundFXScript.instance.CorrectHit(hitAudio,1f);
           collisedObjectCollider=null;
           inside=false;
         } else if(Input.GetKeyDown(KeyCode.B) && inside == false){
