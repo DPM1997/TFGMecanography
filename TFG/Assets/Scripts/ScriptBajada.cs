@@ -41,20 +41,32 @@ public class ScriptBajada : MonoBehaviour
     private ArrayList letterList;
     private Dictionary<string, GameObject> dicctionaryList;
     private ArrayList levelList;
+    private ArrayList levelListOnlyMiddleRow;
     public GameObject topScreen;
     private GameObject movingObject;
     public float downspeed;
     public bool randomMode;
+    public bool randomModeMusic;
+    private float spawningSpeed;
     public string levelPath;
     private Vector2 velocity;
+    private AudioClip backgroundMusic;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        spawningSpeed = 1f;
         LoadGameObjects();
-        if (randomMode)
-            StartCoroutine(CreateObjectRandom());
+        if (randomMode){
+            if(randomModeMusic){
+                backgroundMusic = (AudioClip)Resources.Load("Music/RandomLevel-38");
+                spawningSpeed=1.6f;
+                SoundFXScript.instance.PlayAudio(backgroundMusic, 1f);
+            }
+            //StartCoroutine(CreateObjectRandom());
+            StartCoroutine(CreateObjectRandomMiddleRow());
+        }
         else
             TestLevel();
     }
@@ -94,6 +106,17 @@ public class ScriptBajada : MonoBehaviour
         letterList.Add((GameObject)Resources.Load("GameObjects/Letras/X") as GameObject);
         letterList.Add((GameObject)Resources.Load("GameObjects/Letras/Y") as GameObject);
         letterList.Add((GameObject)Resources.Load("GameObjects/Letras/Z") as GameObject);
+        levelListOnlyMiddleRow = new ArrayList();
+        levelListOnlyMiddleRow.Add(letterList[0]);
+        levelListOnlyMiddleRow.Add(letterList[3]);
+        levelListOnlyMiddleRow.Add(letterList[5]);
+        levelListOnlyMiddleRow.Add(letterList[6]);
+        levelListOnlyMiddleRow.Add(letterList[7]);
+        levelListOnlyMiddleRow.Add(letterList[9]);
+        levelListOnlyMiddleRow.Add(letterList[10]);
+        levelListOnlyMiddleRow.Add(letterList[11]);
+        levelListOnlyMiddleRow.Add(letterList[18]);
+
         foreach (GameObject letter in letterList)
         {
             Debug.Log(letter.name);
@@ -129,7 +152,24 @@ public class ScriptBajada : MonoBehaviour
             //InvokeRepeating("MoveObject", 0.05f, 0.05f);
             velocity = new Vector2(0, -downspeed);
             StartCoroutine(MoveObject(movingObject, 0.05f, rb2D));
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(spawningSpeed);
+        }
+    }
+
+    IEnumerator CreateObjectRandomMiddleRow()
+    {
+        while (true)
+        {
+            Rigidbody2D rb2D;
+            int random = UnityEngine.Random.Range(0, levelListOnlyMiddleRow.Count);
+            GameObject letterFromList = (GameObject)levelListOnlyMiddleRow[random];
+            movingObject = Instantiate(letterFromList, new Vector3(letterFromList.transform.position.x, topScreen.transform.position.y, 0), Quaternion.identity);
+            rb2D = movingObject.AddComponent<Rigidbody2D>();
+            rb2D.bodyType = RigidbodyType2D.Kinematic;
+            //InvokeRepeating("MoveObject", 0.05f, 0.05f);
+            velocity = new Vector2(0, -downspeed);
+            StartCoroutine(MoveObject(movingObject, 0.05f, rb2D));
+            yield return new WaitForSeconds(spawningSpeed);
         }
     }
 

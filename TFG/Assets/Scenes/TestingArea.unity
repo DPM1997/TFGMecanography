@@ -3251,7 +3251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topScreen: {fileID: 581103601}
   downspeed: 0.1
-  randomMode: 0
+  randomMode: 1
   levelPath: ./Assets/Levels/level.csv
 --- !u!114 &1914751114
 MonoBehaviour:
