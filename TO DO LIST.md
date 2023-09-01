@@ -8,7 +8,6 @@ Introduce the first song of the random mode and addecuate the actual script for 
 Add a method to load the levels from a CSV archive
 
 ## Low Priority
-Add Sound of a succesfull type and other for a fail timming or miss
 Read some documentation of actual studies about the amount of letters used in some languages(spanish and english) to make an option to the random mode that consider this and change the percentajes of spawn of the keys to match the studies.
 Delete the examples scenes of UI, located in *TextMesh Pro* Unity
 Add a collider at the bottom to delete the keys that are missed
@@ -20,6 +19,7 @@ Make some kind of Array or Dicctionary to make levels
 ## Medium Priority
 
 ## Low Priority
+Add Sound of a succesfull type and other for a fail timming or miss
 
 # CHANGE VERSION
 ## Version 0.1.0 

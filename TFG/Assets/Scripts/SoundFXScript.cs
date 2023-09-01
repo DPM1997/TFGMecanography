@@ -20,7 +20,7 @@ public class SoundFXScript : MonoBehaviour
     { 
     }
 
-    public void CorrectHit(AudioClip audioClip, float volume){
+    public void PlayAudio(AudioClip audioClip, float volume){
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.playOnAwake = false;
         audioSource.clip = audioClip;
