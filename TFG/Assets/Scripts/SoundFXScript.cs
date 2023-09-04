@@ -7,12 +7,13 @@ public class SoundFXScript : MonoBehaviour
     public static SoundFXScript instance;
     //[SerializeField] private AudioSource soundFXObject;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if(instance == null)
         {
             instance = this;
         }
+        Debug.Log(instance);
     }
 
     // Update is called once per frame

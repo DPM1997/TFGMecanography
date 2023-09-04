@@ -53,23 +53,27 @@ public class ScriptBajada : MonoBehaviour
     private Vector2 velocity;
     private AudioClip backgroundMusic;
     private string lastLetter;
+    private GameObject nextLetter;
     private bool firstTime;
 
-
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         spawningSpeed = 1f;
         firstTime = true;
         LoadGameObjects();
+        backgroundMusic = (AudioClip)Resources.Load("Music/RandomLevel-38");
+
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
         if (randomMode){
             if(randomModeMusic){
-                backgroundMusic = (AudioClip)Resources.Load("Music/RandomLevel-38");
-                Debug.Log(backgroundMusic);
                 spawningSpeed=1.6f;
                 SoundFXScript.instance.PlayAudio(backgroundMusic, 1f);
             }
-            StartCoroutine(CreateObjectRandom());
+            StartCoroutine(CreateObjectRandomV2());
+            //StartCoroutine(CreateObjectRandom());
             //StartCoroutine(CreateObjectRandomMiddleRow());
         }
         else
@@ -173,6 +177,7 @@ public class ScriptBajada : MonoBehaviour
 
     IEnumerator CreateObjectRandom()
     {
+        //Cambiar funcion para que se calcule la siguiente no la anterior
         while (true)
         {
             Rigidbody2D rb2D;
@@ -180,15 +185,17 @@ public class ScriptBajada : MonoBehaviour
             GameObject letterFromList;
             if(firstTime){
                 firstTime = false;
+                Debug.Log("First Time"+firstTime);
                 random = UnityEngine.Random.Range(0, letterListOnlyMiddleRow.Count);
                 letterFromList = (GameObject)letterListOnlyMiddleRow[random];
             }
             else {
+                Debug.Log("First Time"+firstTime);
                 random = UnityEngine.Random.Range(0, letterList.Count);
                 letterFromList = (GameObject)letterList[random];
             }
-            Debug.Log(dicctionaryRow[letterFromList.name]);
-            Debug.Log(letterFromList.name);
+            //Debug.Log(dicctionaryRow[letterFromList.name]);
+            //Debug.Log(letterFromList.name);
             movingObject = Instantiate(letterFromList, new Vector3(letterFromList.transform.position.x, topScreen.transform.position.y, 0), Quaternion.identity);
             rb2D = movingObject.AddComponent<Rigidbody2D>();
             rb2D.bodyType = RigidbodyType2D.Kinematic;
@@ -198,18 +205,81 @@ public class ScriptBajada : MonoBehaviour
             lastLetter = letterFromList.name;
             //Empieza el problema
             if(dicctionaryRow[lastLetter]==2){
+                Debug.Log("dicctionaryRow[lastLetter]"+2);
             if(dicctionaryRow[letterFromList.name]==2)yield return new WaitForSeconds(spawningSpeed);
             else if(dicctionaryRow[letterFromList.name]==1)yield return new WaitForSeconds(spawningSpeed-0.320f);
             else yield return new WaitForSeconds(spawningSpeed+0.320f);
             } else
             if(dicctionaryRow[lastLetter]==1){
+                Debug.Log("dicctionaryRow[lastLetter]"+1);
             if(dicctionaryRow[letterFromList.name]==2)yield return new WaitForSeconds(spawningSpeed+0.320f);
             else if(dicctionaryRow[letterFromList.name]==1)yield return new WaitForSeconds(spawningSpeed);
             else yield return new WaitForSeconds(spawningSpeed+0.640f);
             } else
             if(dicctionaryRow[lastLetter]==3){
+                Debug.Log("dicctionaryRow[lastLetter]"+3);
             if(dicctionaryRow[letterFromList.name]==2)yield return new WaitForSeconds(spawningSpeed-0.320f);
             else if(dicctionaryRow[letterFromList.name]==1)yield return new WaitForSeconds(spawningSpeed-0.640f);
+            else yield return new WaitForSeconds(spawningSpeed);
+            } 
+        }
+    }
+
+    IEnumerator CreateObjectRandomV2()
+    {
+        //Cambiar funcion para que se calcule la siguiente no la anterior
+        while (true)
+        {
+            Rigidbody2D rb2D;
+            int random;
+            GameObject actualLetter;
+            if(firstTime){
+                firstTime = false;
+                Debug.Log("First Time"+firstTime);
+                random = UnityEngine.Random.Range(0, letterListOnlyMiddleRow.Count);
+                actualLetter = (GameObject)letterListOnlyMiddleRow[random];
+                random = UnityEngine.Random.Range(0, letterList.Count);
+                nextLetter = (GameObject)letterList[random];
+            }
+            else {
+                Debug.Log("First Time"+firstTime);
+                random = UnityEngine.Random.Range(0, letterList.Count);
+                actualLetter = nextLetter;
+                nextLetter = (GameObject)letterList[random];
+            }
+            //Debug.Log(dicctionaryRow[letterFromList.name]);
+            //Debug.Log(letterFromList.name);
+            movingObject = Instantiate(actualLetter, new Vector3(actualLetter.transform.position.x, topScreen.transform.position.y, 0), Quaternion.identity);
+            rb2D = movingObject.AddComponent<Rigidbody2D>();
+            rb2D.bodyType = RigidbodyType2D.Kinematic;
+            //InvokeRepeating("MoveObject", 0.05f, 0.05f);
+            velocity = new Vector2(0, -downspeed);
+            StartCoroutine(MoveObject(movingObject, 0.05f, rb2D));
+
+            //lastLetter = actualLetter.name;
+            //Empieza el problema
+            if(dicctionaryRow[actualLetter.name]==2){
+                Debug.Log("Fila Actual:"+2);
+                Debug.Log("Fila Siguiente:"+dicctionaryRow[nextLetter.name]);
+                Debug.Log(nextLetter.name);
+            if(dicctionaryRow[nextLetter.name]==2)yield return new WaitForSeconds(spawningSpeed);
+            else if(dicctionaryRow[nextLetter.name]==1)yield return new WaitForSeconds(spawningSpeed+0.320f);
+            else yield return new WaitForSeconds(spawningSpeed-0.320f);
+            } else
+            if(dicctionaryRow[actualLetter.name]==1){
+                Debug.Log("Fila Actual:"+1);
+                Debug.Log("Fila Siguiente:"+dicctionaryRow[nextLetter.name]);
+                Debug.Log(nextLetter.name);
+            if(dicctionaryRow[nextLetter.name]==2)yield return new WaitForSeconds(spawningSpeed-0.320f);
+            else if(dicctionaryRow[nextLetter.name]==1)yield return new WaitForSeconds(spawningSpeed);
+            else yield return new WaitForSeconds(spawningSpeed-0.640f);
+            } else
+            if(dicctionaryRow[actualLetter.name]==3){
+                Debug.Log("Fila Actual:"+3);
+                Debug.Log("Fila Siguiente:"+dicctionaryRow[nextLetter.name]);
+                Debug.Log(nextLetter.name);
+            if(dicctionaryRow[nextLetter.name]==2)yield return new WaitForSeconds(spawningSpeed+0.320f);
+            else if(dicctionaryRow[nextLetter.name]==1)yield return new WaitForSeconds(spawningSpeed+0.640f);
             else yield return new WaitForSeconds(spawningSpeed);
             } 
         }
