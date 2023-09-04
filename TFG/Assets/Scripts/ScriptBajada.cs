@@ -11,18 +11,18 @@ public class LevelKey
 {
     string key; //Maybe in a future this element is a int or an enum for memory optimization
     int timeToAppear; //In miliseconds
-    int tiemToWait; //Time to wait for the next key
+    int timeToWait; //Time to wait for the next key
 
-    public LevelKey(string key, int timeToAppear, int tiemToWait)
+    public LevelKey(string key, int timeToAppear, int timeToWait)
     {
         this.key = key;
         this.timeToAppear = timeToAppear;
-        this.tiemToWait = tiemToWait;
+        this.timeToWait = timeToWait;
     }
 
     public override string ToString()
     {
-        return "" + key + ";" + timeToAppear + ";" + tiemToWait + "";
+        return "" + key + ";" + timeToAppear + ";" + timeToWait + "";
     }
 
     public string getKey()
@@ -32,7 +32,7 @@ public class LevelKey
 
     public int getTimeToWait()
     {
-        return tiemToWait;
+        return timeToWait;
     }
 }
 
