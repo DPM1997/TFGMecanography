@@ -153,11 +153,6 @@ public class ScriptBajada : MonoBehaviour
         dicctionaryRow.Add("N",3);
         dicctionaryRow.Add("M",3);
 
-        foreach (GameObject letter in letterList)
-        {
-            Debug.Log(letter.name);
-        }
-
         //Load in dicctionary for the levels
         dicctionaryList = new Dictionary<string, GameObject>();
         foreach (GameObject letter in letterList)
@@ -221,7 +216,7 @@ public class ScriptBajada : MonoBehaviour
             if(dicctionaryRow[letterFromList.name]==2)yield return new WaitForSeconds(spawningSpeed-0.320f);
             else if(dicctionaryRow[letterFromList.name]==1)yield return new WaitForSeconds(spawningSpeed-0.640f);
             else yield return new WaitForSeconds(spawningSpeed);
-            } 
+            }
         }
     }
 
@@ -259,29 +254,29 @@ public class ScriptBajada : MonoBehaviour
             //lastLetter = actualLetter.name;
             //Empieza el problema
             if(dicctionaryRow[actualLetter.name]==2){
-                Debug.Log("Fila Actual:"+2);
-                Debug.Log("Fila Siguiente:"+dicctionaryRow[nextLetter.name]);
-                Debug.Log(nextLetter.name);
+                // Debug.Log("Fila Actual:"+2);
+                // Debug.Log("Fila Siguiente:"+dicctionaryRow[nextLetter.name]);
+                // Debug.Log(nextLetter.name);
             if(dicctionaryRow[nextLetter.name]==2)yield return new WaitForSeconds(spawningSpeed);
             else if(dicctionaryRow[nextLetter.name]==1)yield return new WaitForSeconds(spawningSpeed+0.320f);
             else yield return new WaitForSeconds(spawningSpeed-0.320f);
             } else
             if(dicctionaryRow[actualLetter.name]==1){
-                Debug.Log("Fila Actual:"+1);
-                Debug.Log("Fila Siguiente:"+dicctionaryRow[nextLetter.name]);
-                Debug.Log(nextLetter.name);
+                // Debug.Log("Fila Actual:"+1);
+                // Debug.Log("Fila Siguiente:"+dicctionaryRow[nextLetter.name]);
+                // Debug.Log(nextLetter.name);
             if(dicctionaryRow[nextLetter.name]==2)yield return new WaitForSeconds(spawningSpeed-0.320f);
             else if(dicctionaryRow[nextLetter.name]==1)yield return new WaitForSeconds(spawningSpeed);
             else yield return new WaitForSeconds(spawningSpeed-0.640f);
             } else
             if(dicctionaryRow[actualLetter.name]==3){
-                Debug.Log("Fila Actual:"+3);
-                Debug.Log("Fila Siguiente:"+dicctionaryRow[nextLetter.name]);
-                Debug.Log(nextLetter.name);
+                // Debug.Log("Fila Actual:"+3);
+                // Debug.Log("Fila Siguiente:"+dicctionaryRow[nextLetter.name]);
+                // Debug.Log(nextLetter.name);
             if(dicctionaryRow[nextLetter.name]==2)yield return new WaitForSeconds(spawningSpeed+0.320f);
             else if(dicctionaryRow[nextLetter.name]==1)yield return new WaitForSeconds(spawningSpeed+0.640f);
             else yield return new WaitForSeconds(spawningSpeed);
-            } 
+            }
         }
     }
 

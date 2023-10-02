@@ -12,7 +12,6 @@ Add a feedback in the keyboard when a key is pressed
 Delete the examples scenes of UI, located in *TextMesh Pro* Unity
 Start desining the UI
     -Desing a Menu for the sound and to reset the level
-Start making the GDD(Game Design Document)
 
 # DONE LIST
 
