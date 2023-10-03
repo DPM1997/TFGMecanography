@@ -6,6 +6,7 @@ using UnityEngine;
 using System.IO;
 using System.Text;
 using System;
+using System.Linq;
 
 public class LevelKey
 {
@@ -61,6 +62,7 @@ public class ScriptBajada : MonoBehaviour
         spawningSpeed = 1f;
         firstTime = true;
         LoadGameObjects();
+        createPercentajeSpanish();
         backgroundMusic = (AudioClip)Resources.Load("Music/RandomLevel-38");
 
     }
@@ -159,6 +161,37 @@ public class ScriptBajada : MonoBehaviour
         {
             dicctionaryList.Add(letter.name, letter);
         }
+    }
+
+    public void createPercentajeSpanish(){
+        Dictionary<string, float> dicctionaryPercentaje = new Dictionary<string, float>();
+        dicctionaryPercentaje.Add("A",(float)0.120365034);
+        dicctionaryPercentaje.Add("B",(float)0.01364073);
+        dicctionaryPercentaje.Add("C",(float)0.044956772);
+        dicctionaryPercentaje.Add("D",(float)0.056292027);
+        dicctionaryPercentaje.Add("E",(float)0.131412104);
+        dicctionaryPercentaje.Add("F",(float)0.006628242);
+        dicctionaryPercentaje.Add("G",(float)0.009702209);
+        dicctionaryPercentaje.Add("H",(float)0.006724304);
+        dicctionaryPercentaje.Add("I",(float)0.060038425);
+        dicctionaryPercentaje.Add("J",(float)0.042267051);
+        dicctionaryPercentaje.Add("K",(float)0.000192123);
+        dicctionaryPercentaje.Add("L",(float)0.047742555);
+        dicctionaryPercentaje.Add("M",(float)0.030259366);
+        dicctionaryPercentaje.Add("N",(float)0.064457253);
+        dicctionaryPercentaje.Add("O",(float)0.083381364);
+        dicctionaryPercentaje.Add("P",(float)0.024111431);
+        dicctionaryPercentaje.Add("Q",(float)0.008453410);
+        dicctionaryPercentaje.Add("R",(float)0.065994236);
+        dicctionaryPercentaje.Add("S",(float)0.076657061);
+        dicctionaryPercentaje.Add("T",(float)0.044476465);
+        dicctionaryPercentaje.Add("U",(float)0.037752161);
+        dicctionaryPercentaje.Add("V",(float)0.008645533);
+        dicctionaryPercentaje.Add("W",(float)0.000096061);
+        dicctionaryPercentaje.Add("X",(float)0.002113353);
+        dicctionaryPercentaje.Add("Y",(float)0.008645533);
+        dicctionaryPercentaje.Add("Z",(float)0.004995197);
+        //.stream().mapToInt(ElementoConPorcentaje::getPorcentaje).sum();
     }
 
     IEnumerator MoveObject(GameObject thisMovingObject, float repeatRate, Rigidbody2D rb2D)
