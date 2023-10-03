@@ -1,7 +1,6 @@
 # TO DO LIST
 
 ## High Priority
-Make an option in random mode to use the data of frequency of letters in spanish
 
 ## Medium Priority
 Make a first tutorial Level
@@ -17,6 +16,8 @@ Start desining the UI
 
 ## High Priority
 Read some documentation of actual studies about the amount of letters used in some languages(spanish and english) to make an option to the random mode that consider this and change the percentajes of spawn of the keys to match the studies.
+Make an option in random mode to use the data of frequency of letters in spanish
+
 
 ## Medium Priority
 

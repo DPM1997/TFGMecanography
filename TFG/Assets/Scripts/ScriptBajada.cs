@@ -37,6 +37,29 @@ public class LevelKey
     }
 }
 
+public class KeyRandom
+{
+    float percentaje;
+
+    string letra;
+
+    public KeyRandom(string letra, float percentaje)
+    {
+        this.percentaje = percentaje;
+        this.letra = letra;
+    }
+
+    public string getLetra()
+    {
+        return this.letra;
+    }
+
+    public float getPercentaje()
+    {
+        return this.percentaje;
+    }
+}
+
 public class ScriptBajada : MonoBehaviour
 {
     private ArrayList letterList;
@@ -44,11 +67,14 @@ public class ScriptBajada : MonoBehaviour
     private Dictionary<string, int> dicctionaryRow;
     private ArrayList levelList;
     private ArrayList letterListOnlyMiddleRow;
+    private List<KeyRandom> percentageList;
+    private float sumTotalPercentageList;
     public GameObject topScreen;
     private GameObject movingObject;
     public float downspeed;
     public bool randomMode;
     public bool randomModeMusic;
+    public bool spanish;
     private float spawningSpeed;
     public string levelPath;
     private Vector2 velocity;
@@ -69,9 +95,11 @@ public class ScriptBajada : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (randomMode){
-            if(randomModeMusic){
-                spawningSpeed=1.6f;
+        if (randomMode)
+        {
+            if (randomModeMusic)
+            {
+                spawningSpeed = 1.6f;
                 SoundFXScript.instance.PlayAudio(backgroundMusic, 1f);
             }
             StartCoroutine(CreateObjectRandomV2());
@@ -128,32 +156,32 @@ public class ScriptBajada : MonoBehaviour
         letterListOnlyMiddleRow.Add(letterList[11]);
         letterListOnlyMiddleRow.Add(letterList[18]);
         dicctionaryRow = new Dictionary<string, int>();
-        dicctionaryRow.Add("Q",1);
-        dicctionaryRow.Add("W",1);
-        dicctionaryRow.Add("E",1);
-        dicctionaryRow.Add("R",1);
-        dicctionaryRow.Add("T",1);
-        dicctionaryRow.Add("Y",1);
-        dicctionaryRow.Add("U",1);
-        dicctionaryRow.Add("I",1);
-        dicctionaryRow.Add("O",1);
-        dicctionaryRow.Add("P",1);
-        dicctionaryRow.Add("A",2);
-        dicctionaryRow.Add("S",2);
-        dicctionaryRow.Add("D",2);
-        dicctionaryRow.Add("F",2);
-        dicctionaryRow.Add("G",2);
-        dicctionaryRow.Add("H",2);
-        dicctionaryRow.Add("J",2);
-        dicctionaryRow.Add("K",2);
-        dicctionaryRow.Add("L",2);
-        dicctionaryRow.Add("Z",3);
-        dicctionaryRow.Add("X",3);
-        dicctionaryRow.Add("C",3);
-        dicctionaryRow.Add("V",3);
-        dicctionaryRow.Add("B",3);
-        dicctionaryRow.Add("N",3);
-        dicctionaryRow.Add("M",3);
+        dicctionaryRow.Add("Q", 1);
+        dicctionaryRow.Add("W", 1);
+        dicctionaryRow.Add("E", 1);
+        dicctionaryRow.Add("R", 1);
+        dicctionaryRow.Add("T", 1);
+        dicctionaryRow.Add("Y", 1);
+        dicctionaryRow.Add("U", 1);
+        dicctionaryRow.Add("I", 1);
+        dicctionaryRow.Add("O", 1);
+        dicctionaryRow.Add("P", 1);
+        dicctionaryRow.Add("A", 2);
+        dicctionaryRow.Add("S", 2);
+        dicctionaryRow.Add("D", 2);
+        dicctionaryRow.Add("F", 2);
+        dicctionaryRow.Add("G", 2);
+        dicctionaryRow.Add("H", 2);
+        dicctionaryRow.Add("J", 2);
+        dicctionaryRow.Add("K", 2);
+        dicctionaryRow.Add("L", 2);
+        dicctionaryRow.Add("Z", 3);
+        dicctionaryRow.Add("X", 3);
+        dicctionaryRow.Add("C", 3);
+        dicctionaryRow.Add("V", 3);
+        dicctionaryRow.Add("B", 3);
+        dicctionaryRow.Add("N", 3);
+        dicctionaryRow.Add("M", 3);
 
         //Load in dicctionary for the levels
         dicctionaryList = new Dictionary<string, GameObject>();
@@ -163,35 +191,41 @@ public class ScriptBajada : MonoBehaviour
         }
     }
 
-    public void createPercentajeSpanish(){
-        Dictionary<string, float> dicctionaryPercentaje = new Dictionary<string, float>();
-        dicctionaryPercentaje.Add("A",(float)0.120365034);
-        dicctionaryPercentaje.Add("B",(float)0.01364073);
-        dicctionaryPercentaje.Add("C",(float)0.044956772);
-        dicctionaryPercentaje.Add("D",(float)0.056292027);
-        dicctionaryPercentaje.Add("E",(float)0.131412104);
-        dicctionaryPercentaje.Add("F",(float)0.006628242);
-        dicctionaryPercentaje.Add("G",(float)0.009702209);
-        dicctionaryPercentaje.Add("H",(float)0.006724304);
-        dicctionaryPercentaje.Add("I",(float)0.060038425);
-        dicctionaryPercentaje.Add("J",(float)0.042267051);
-        dicctionaryPercentaje.Add("K",(float)0.000192123);
-        dicctionaryPercentaje.Add("L",(float)0.047742555);
-        dicctionaryPercentaje.Add("M",(float)0.030259366);
-        dicctionaryPercentaje.Add("N",(float)0.064457253);
-        dicctionaryPercentaje.Add("O",(float)0.083381364);
-        dicctionaryPercentaje.Add("P",(float)0.024111431);
-        dicctionaryPercentaje.Add("Q",(float)0.008453410);
-        dicctionaryPercentaje.Add("R",(float)0.065994236);
-        dicctionaryPercentaje.Add("S",(float)0.076657061);
-        dicctionaryPercentaje.Add("T",(float)0.044476465);
-        dicctionaryPercentaje.Add("U",(float)0.037752161);
-        dicctionaryPercentaje.Add("V",(float)0.008645533);
-        dicctionaryPercentaje.Add("W",(float)0.000096061);
-        dicctionaryPercentaje.Add("X",(float)0.002113353);
-        dicctionaryPercentaje.Add("Y",(float)0.008645533);
-        dicctionaryPercentaje.Add("Z",(float)0.004995197);
-        //.stream().mapToInt(ElementoConPorcentaje::getPorcentaje).sum();
+    public void createPercentajeSpanish()
+    {
+        percentageList = new List<KeyRandom>();
+        percentageList.Add(new KeyRandom("A", (float)0.120365034));
+        percentageList.Add(new KeyRandom("B", (float)0.013640730));
+        percentageList.Add(new KeyRandom("C", (float)0.044956772));
+        percentageList.Add(new KeyRandom("D", (float)0.056292027));
+        percentageList.Add(new KeyRandom("E", (float)0.131412104));
+        percentageList.Add(new KeyRandom("F", (float)0.006628242));
+        percentageList.Add(new KeyRandom("G", (float)0.009702209));
+        percentageList.Add(new KeyRandom("H", (float)0.006724304));
+        percentageList.Add(new KeyRandom("I", (float)0.060038425));
+        percentageList.Add(new KeyRandom("J", (float)0.042267051));
+        percentageList.Add(new KeyRandom("K", (float)0.000192123));
+        percentageList.Add(new KeyRandom("L", (float)0.047742555));
+        percentageList.Add(new KeyRandom("M", (float)0.030259366));
+        percentageList.Add(new KeyRandom("N", (float)0.064457253));
+        percentageList.Add(new KeyRandom("O", (float)0.083381364));
+        percentageList.Add(new KeyRandom("P", (float)0.024111431));
+        percentageList.Add(new KeyRandom("Q", (float)0.008453410));
+        percentageList.Add(new KeyRandom("R", (float)0.065994236));
+        percentageList.Add(new KeyRandom("S", (float)0.076657061));
+        percentageList.Add(new KeyRandom("T", (float)0.044476465));
+        percentageList.Add(new KeyRandom("U", (float)0.037752161));
+        percentageList.Add(new KeyRandom("V", (float)0.008645533));
+        percentageList.Add(new KeyRandom("W", (float)0.000096061));
+        percentageList.Add(new KeyRandom("X", (float)0.002113353));
+        percentageList.Add(new KeyRandom("Y", (float)0.008645533));
+        percentageList.Add(new KeyRandom("Z", (float)0.004995197));
+        sumTotalPercentageList = 0;
+        foreach (var item in percentageList) sumTotalPercentageList += item.getPercentaje();
+    }
+
+    public int letterToArrayIndex(string letter){
+        return (int)letter.ToCharArray()[0] - (int)'A' + 1;
     }
 
     IEnumerator MoveObject(GameObject thisMovingObject, float repeatRate, Rigidbody2D rb2D)
@@ -210,17 +244,36 @@ public class ScriptBajada : MonoBehaviour
         {
             Rigidbody2D rb2D;
             int random;
+            float randomSpa;
+            string letterRandomSpa = "";
             GameObject letterFromList;
-            if(firstTime){
+            if (firstTime)
+            {
                 firstTime = false;
-                Debug.Log("First Time"+firstTime);
+                Debug.Log("First Time" + firstTime);
+                randomSpa = UnityEngine.Random.Range(0, sumTotalPercentageList);
                 random = UnityEngine.Random.Range(0, letterListOnlyMiddleRow.Count);
                 letterFromList = (GameObject)letterListOnlyMiddleRow[random];
             }
-            else {
-                Debug.Log("First Time"+firstTime);
+            else
+            {
+                Debug.Log("First Time" + firstTime);
+                if(spanish){
+                randomSpa = UnityEngine.Random.Range(0, sumTotalPercentageList);
+                float sumTotal = 0;
+                foreach (var keyFromList in percentageList)
+                {
+                    sumTotal += keyFromList.getPercentaje();
+                    if (randomSpa <= sumTotal)
+                    {
+                        letterRandomSpa = keyFromList.getLetra();
+                        break;
+                    }
+                }
+                }
                 random = UnityEngine.Random.Range(0, letterList.Count);
-                letterFromList = (GameObject)letterList[random];
+                if(spanish) letterFromList = (GameObject)letterList[letterToArrayIndex(letterRandomSpa)];
+                else letterFromList = (GameObject)letterList[random];
             }
             //Debug.Log(dicctionaryRow[letterFromList.name]);
             //Debug.Log(letterFromList.name);
@@ -232,23 +285,28 @@ public class ScriptBajada : MonoBehaviour
             StartCoroutine(MoveObject(movingObject, 0.05f, rb2D));
             lastLetter = letterFromList.name;
             //Empieza el problema
-            if(dicctionaryRow[lastLetter]==2){
-                Debug.Log("dicctionaryRow[lastLetter]"+2);
-            if(dicctionaryRow[letterFromList.name]==2)yield return new WaitForSeconds(spawningSpeed);
-            else if(dicctionaryRow[letterFromList.name]==1)yield return new WaitForSeconds(spawningSpeed-0.320f);
-            else yield return new WaitForSeconds(spawningSpeed+0.320f);
-            } else
-            if(dicctionaryRow[lastLetter]==1){
-                Debug.Log("dicctionaryRow[lastLetter]"+1);
-            if(dicctionaryRow[letterFromList.name]==2)yield return new WaitForSeconds(spawningSpeed+0.320f);
-            else if(dicctionaryRow[letterFromList.name]==1)yield return new WaitForSeconds(spawningSpeed);
-            else yield return new WaitForSeconds(spawningSpeed+0.640f);
-            } else
-            if(dicctionaryRow[lastLetter]==3){
-                Debug.Log("dicctionaryRow[lastLetter]"+3);
-            if(dicctionaryRow[letterFromList.name]==2)yield return new WaitForSeconds(spawningSpeed-0.320f);
-            else if(dicctionaryRow[letterFromList.name]==1)yield return new WaitForSeconds(spawningSpeed-0.640f);
-            else yield return new WaitForSeconds(spawningSpeed);
+            if (dicctionaryRow[lastLetter] == 2)
+            {
+                Debug.Log("dicctionaryRow[lastLetter]" + 2);
+                if (dicctionaryRow[letterFromList.name] == 2) yield return new WaitForSeconds(spawningSpeed);
+                else if (dicctionaryRow[letterFromList.name] == 1) yield return new WaitForSeconds(spawningSpeed - 0.320f);
+                else yield return new WaitForSeconds(spawningSpeed + 0.320f);
+            }
+            else
+            if (dicctionaryRow[lastLetter] == 1)
+            {
+                Debug.Log("dicctionaryRow[lastLetter]" + 1);
+                if (dicctionaryRow[letterFromList.name] == 2) yield return new WaitForSeconds(spawningSpeed + 0.320f);
+                else if (dicctionaryRow[letterFromList.name] == 1) yield return new WaitForSeconds(spawningSpeed);
+                else yield return new WaitForSeconds(spawningSpeed + 0.640f);
+            }
+            else
+            if (dicctionaryRow[lastLetter] == 3)
+            {
+                Debug.Log("dicctionaryRow[lastLetter]" + 3);
+                if (dicctionaryRow[letterFromList.name] == 2) yield return new WaitForSeconds(spawningSpeed - 0.320f);
+                else if (dicctionaryRow[letterFromList.name] == 1) yield return new WaitForSeconds(spawningSpeed - 0.640f);
+                else yield return new WaitForSeconds(spawningSpeed);
             }
         }
     }
@@ -261,16 +319,18 @@ public class ScriptBajada : MonoBehaviour
             Rigidbody2D rb2D;
             int random;
             GameObject actualLetter;
-            if(firstTime){
+            if (firstTime)
+            {
                 firstTime = false;
-                Debug.Log("First Time"+firstTime);
+                Debug.Log("First Time" + firstTime);
                 random = UnityEngine.Random.Range(0, letterListOnlyMiddleRow.Count);
                 actualLetter = (GameObject)letterListOnlyMiddleRow[random];
                 random = UnityEngine.Random.Range(0, letterList.Count);
                 nextLetter = (GameObject)letterList[random];
             }
-            else {
-                Debug.Log("First Time"+firstTime);
+            else
+            {
+                Debug.Log("First Time" + firstTime);
                 random = UnityEngine.Random.Range(0, letterList.Count);
                 actualLetter = nextLetter;
                 nextLetter = (GameObject)letterList[random];
@@ -286,29 +346,34 @@ public class ScriptBajada : MonoBehaviour
 
             //lastLetter = actualLetter.name;
             //Empieza el problema
-            if(dicctionaryRow[actualLetter.name]==2){
+            if (dicctionaryRow[actualLetter.name] == 2)
+            {
                 // Debug.Log("Fila Actual:"+2);
                 // Debug.Log("Fila Siguiente:"+dicctionaryRow[nextLetter.name]);
                 // Debug.Log(nextLetter.name);
-            if(dicctionaryRow[nextLetter.name]==2)yield return new WaitForSeconds(spawningSpeed);
-            else if(dicctionaryRow[nextLetter.name]==1)yield return new WaitForSeconds(spawningSpeed+0.320f);
-            else yield return new WaitForSeconds(spawningSpeed-0.320f);
-            } else
-            if(dicctionaryRow[actualLetter.name]==1){
+                if (dicctionaryRow[nextLetter.name] == 2) yield return new WaitForSeconds(spawningSpeed);
+                else if (dicctionaryRow[nextLetter.name] == 1) yield return new WaitForSeconds(spawningSpeed + 0.320f);
+                else yield return new WaitForSeconds(spawningSpeed - 0.320f);
+            }
+            else
+            if (dicctionaryRow[actualLetter.name] == 1)
+            {
                 // Debug.Log("Fila Actual:"+1);
                 // Debug.Log("Fila Siguiente:"+dicctionaryRow[nextLetter.name]);
                 // Debug.Log(nextLetter.name);
-            if(dicctionaryRow[nextLetter.name]==2)yield return new WaitForSeconds(spawningSpeed-0.320f);
-            else if(dicctionaryRow[nextLetter.name]==1)yield return new WaitForSeconds(spawningSpeed);
-            else yield return new WaitForSeconds(spawningSpeed-0.640f);
-            } else
-            if(dicctionaryRow[actualLetter.name]==3){
+                if (dicctionaryRow[nextLetter.name] == 2) yield return new WaitForSeconds(spawningSpeed - 0.320f);
+                else if (dicctionaryRow[nextLetter.name] == 1) yield return new WaitForSeconds(spawningSpeed);
+                else yield return new WaitForSeconds(spawningSpeed - 0.640f);
+            }
+            else
+            if (dicctionaryRow[actualLetter.name] == 3)
+            {
                 // Debug.Log("Fila Actual:"+3);
                 // Debug.Log("Fila Siguiente:"+dicctionaryRow[nextLetter.name]);
                 // Debug.Log(nextLetter.name);
-            if(dicctionaryRow[nextLetter.name]==2)yield return new WaitForSeconds(spawningSpeed+0.320f);
-            else if(dicctionaryRow[nextLetter.name]==1)yield return new WaitForSeconds(spawningSpeed+0.640f);
-            else yield return new WaitForSeconds(spawningSpeed);
+                if (dicctionaryRow[nextLetter.name] == 2) yield return new WaitForSeconds(spawningSpeed + 0.320f);
+                else if (dicctionaryRow[nextLetter.name] == 1) yield return new WaitForSeconds(spawningSpeed + 0.640f);
+                else yield return new WaitForSeconds(spawningSpeed);
             }
         }
     }
@@ -343,16 +408,17 @@ public class ScriptBajada : MonoBehaviour
         using (StreamWriter writer = new StreamWriter("./Assets/Levels/level.csv"))
         {
             foreach (LevelKey levelKey in levelList)
-            writer.WriteLine(levelKey.ToString());
+                writer.WriteLine(levelKey.ToString());
         }
     }
 
-    void ReadLevel(){
+    void ReadLevel()
+    {
         levelList = new ArrayList();
         foreach (string line in File.ReadLines(levelPath, Encoding.UTF8))
         {
             string[] words = line.Split(';');
-            LevelKey key = new LevelKey(words[0],Int32.Parse(words[1]),Int32.Parse(words[2]));
+            LevelKey key = new LevelKey(words[0], Int32.Parse(words[1]), Int32.Parse(words[2]));
             levelList.Add(key);
         }
     }
