@@ -3,15 +3,21 @@
 ## High Priority
 
 ## Medium Priority
-
+Make a first tutorial Level
+Add a function that calculates the timeToWait from the timeToAppear et viceversa
+Add a feedback in the keyboard when a key is pressed
 
 ## Low Priority
-Read some documentation of actual studies about the amount of letters used in some languages(spanish and english) to make an option to the random mode that consider this and change the percentajes of spawn of the keys to match the studies.
 Delete the examples scenes of UI, located in *TextMesh Pro* Unity
+Start desining the UI
+    -Desing a Menu for the sound and to reset the level
 
 # DONE LIST
 
 ## High Priority
+Read some documentation of actual studies about the amount of letters used in some languages(spanish and english) to make an option to the random mode that consider this and change the percentajes of spawn of the keys to match the studies.
+Make an option in random mode to use the data of frequency of letters in spanish
+
 
 ## Medium Priority
 

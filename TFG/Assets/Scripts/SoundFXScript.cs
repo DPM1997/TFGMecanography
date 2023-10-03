@@ -13,7 +13,7 @@ public class SoundFXScript : MonoBehaviour
         {
             instance = this;
         }
-        Debug.Log(instance);
+        // Debug.Log(instance);
     }
 
     // Update is called once per frame
