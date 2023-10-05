@@ -14,6 +14,7 @@ public class Click : MonoBehaviour
     [SerializeField] private AudioClip hitAudio; 
     [SerializeField] private AudioClip missAudio; 
     public GameObject scoreObject;
+    [SerializeField] private Slider slider;
     int score;
 
     // Start is called before the first frame update
@@ -56,6 +57,8 @@ public class Click : MonoBehaviour
     {
         if(other.tag==keyCode.ToString())inside = false;
         collisedObjectCollider=null;
+        //Bajar vida
+
     }
 
 }
