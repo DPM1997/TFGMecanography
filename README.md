@@ -1,4 +1,6 @@
 # TFGMecanography
+### Version 0.2.1
+Defined spanish frecuency in random mode
 ## Version 0.2.0
 Added two main features:
 - Load Level with CSV with this nomenclature "{letter};{timeOfSpawn};{timeToWait}"
