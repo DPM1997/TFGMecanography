@@ -354,7 +354,8 @@ MonoBehaviour:
   hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   missAudio: {fileID: 8300000, guid: b95314836f1efa7449bbd096614178b9, type: 3}
   scoreObject: {fileID: 212292657}
-  slider: {fileID: 0}
+  comboObject: {fileID: 1442869135}
+  slider: {fileID: 1019752478}
 --- !u!1 &581103601
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,7 +663,8 @@ MonoBehaviour:
   hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   missAudio: {fileID: 8300000, guid: b95314836f1efa7449bbd096614178b9, type: 3}
   scoreObject: {fileID: 212292657}
-  slider: {fileID: 0}
+  comboObject: {fileID: 1442869135}
+  slider: {fileID: 1019752478}
 --- !u!1 &665955335
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +762,8 @@ MonoBehaviour:
   hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   missAudio: {fileID: 8300000, guid: b95314836f1efa7449bbd096614178b9, type: 3}
   scoreObject: {fileID: 212292657}
-  slider: {fileID: 0}
+  comboObject: {fileID: 1442869135}
+  slider: {fileID: 1019752478}
 --- !u!1 &710699280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,7 +1015,8 @@ MonoBehaviour:
   hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   missAudio: {fileID: 8300000, guid: b95314836f1efa7449bbd096614178b9, type: 3}
   scoreObject: {fileID: 212292657}
-  slider: {fileID: 0}
+  comboObject: {fileID: 1442869135}
+  slider: {fileID: 1019752478}
 --- !u!1 &947777576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1610,7 +1614,8 @@ MonoBehaviour:
   hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   missAudio: {fileID: 8300000, guid: b95314836f1efa7449bbd096614178b9, type: 3}
   scoreObject: {fileID: 212292657}
-  slider: {fileID: 0}
+  comboObject: {fileID: 1442869135}
+  slider: {fileID: 1019752478}
 --- !u!1 &1280836649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,7 +1847,8 @@ MonoBehaviour:
   hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   missAudio: {fileID: 8300000, guid: b95314836f1efa7449bbd096614178b9, type: 3}
   scoreObject: {fileID: 212292657}
-  slider: {fileID: 0}
+  comboObject: {fileID: 1442869135}
+  slider: {fileID: 1019752478}
 --- !u!1 &1389341208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,7 +1946,8 @@ MonoBehaviour:
   hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   missAudio: {fileID: 8300000, guid: b95314836f1efa7449bbd096614178b9, type: 3}
   scoreObject: {fileID: 212292657}
-  slider: {fileID: 0}
+  comboObject: {fileID: 1442869135}
+  slider: {fileID: 1019752478}
 --- !u!1 &1406913282
 GameObject:
   m_ObjectHideFlags: 0
@@ -2038,7 +2045,8 @@ MonoBehaviour:
   hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   missAudio: {fileID: 8300000, guid: b95314836f1efa7449bbd096614178b9, type: 3}
   scoreObject: {fileID: 212292657}
-  slider: {fileID: 0}
+  comboObject: {fileID: 1442869135}
+  slider: {fileID: 1019752478}
 --- !u!1 &1427851569
 GameObject:
   m_ObjectHideFlags: 0
@@ -2136,7 +2144,8 @@ MonoBehaviour:
   hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   missAudio: {fileID: 8300000, guid: b95314836f1efa7449bbd096614178b9, type: 3}
   scoreObject: {fileID: 212292657}
-  slider: {fileID: 0}
+  comboObject: {fileID: 1442869135}
+  slider: {fileID: 1019752478}
 --- !u!1 &1436362426
 GameObject:
   m_ObjectHideFlags: 0
@@ -2967,7 +2976,8 @@ MonoBehaviour:
   hitAudio: {fileID: 8300000, guid: 9ea6adede2c57674d9a200a7de16be25, type: 3}
   missAudio: {fileID: 8300000, guid: b95314836f1efa7449bbd096614178b9, type: 3}
   scoreObject: {fileID: 212292657}
-  slider: {fileID: 0}
+  comboObject: {fileID: 1442869135}
+  slider: {fileID: 1019752478}
 --- !u!1 &2075574960
 GameObject:
   m_ObjectHideFlags: 0
