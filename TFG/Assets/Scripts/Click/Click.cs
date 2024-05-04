@@ -13,41 +13,47 @@ public class Click : MonoBehaviour
     [SerializeField] private UnityEngine.KeyCode keyCode4;
     bool inside;
     Collider2D collisedObjectCollider;
-    private TMP_Text text;
+    private TMP_Text scoreText;
+    private TMP_Text comboText;
     [SerializeField] private AudioClip hitAudio; 
     [SerializeField] private AudioClip missAudio; 
     public GameObject scoreObject;
+    public GameObject comboObject;
     [SerializeField] private Slider slider;
     int score;
+    int combo;
+    bool scored;
 
     // Start is called before the first frame update
     void Start()
     {
         inside = false;
         score = 0;
-        text = scoreObject.GetComponent<TMP_Text>();
+        scored=false;
+        combo=0;
+        slider.value=20;
+        scoreText = scoreObject.GetComponent<TMP_Text>();
+        comboText = comboObject.GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        score = Int32.Parse(scoreText.text);
         if ((Input.GetKeyDown(keyCode1) || Input.GetKeyDown(keyCode2) || Input.GetKeyDown(keyCode3) || Input.GetKeyDown(keyCode4)) && inside == true){
-          score = Int32.Parse(text.text);
           Debug.Log("---inside:"+inside);
           //Se mete en la función pero no modifica la variable del score
           Debug.Log((Input.GetKeyDown(keyCode1) || Input.GetKeyDown(keyCode2) || Input.GetKeyDown(keyCode3) || Input.GetKeyDown(keyCode4) && inside == true));
-          score = score + 10;
-          text.text=(""+score);
+          scored=true;
           Destroy(collisedObjectCollider.gameObject);
           //ReproducirSonido
           SoundFXScript.instance.PlayAudio(hitAudio,1f);
           collisedObjectCollider=null;
           inside=false;
         } else if((Input.GetKeyDown(keyCode1) || Input.GetKeyDown(keyCode2) || Input.GetKeyDown(keyCode3) || Input.GetKeyDown(keyCode4)) && inside == false){
-            score = Int32.Parse(text.text);
             SoundFXScript.instance.PlayAudio(missAudio,1f);
-            score = score -1;
-            text.text=(""+score);
+            score = score - 5;
+            scoreText.text=(""+score);
         }
 
     }
@@ -64,16 +70,29 @@ public class Click : MonoBehaviour
     //Cuidado con esta función, cuando se destruye un objeto se detecta que se ha salido del trigger por lo que cuidadin
     void OnTriggerExit2D(Collider2D other)
     {
+        combo = Int32.Parse(comboText.text);
+        score = Int32.Parse(scoreText.text);
         if(other.tag==keyCode1.ToString())inside = false;
         else if(other.tag==keyCode1.ToString())inside = false;
         else if(other.tag==keyCode1.ToString())inside = false;
         else if(other.tag==keyCode1.ToString())inside = false;
+        if(scored==true){
+            score = (int)(score+100+100*combo*0.01);
+            scoreText.text=(""+score);
+            combo++;
+            comboText.text=(""+combo);
+            if(combo%5==0)
+                slider.value++;
+            scored=false;
+        }else{
+            combo=0;
+            comboText.text=(""+combo);
+            score = score - 20;
+            scoreText.text=(""+score);
+            Destroy(other.gameObject);
+            slider.value--;
+        }
         collisedObjectCollider=null;
-        //Bajar vida
-        Destroy(other.gameObject);
-        score = Int32.Parse(text.text);
-        score = score - 5;
-        text.text=(""+score);
     }
 
 }

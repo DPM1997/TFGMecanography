@@ -1,12 +1,9 @@
 # TO DO LIST
 
 ## High Priority
-Modify all the gameplayScene to add the actual interface
-Add Life to gameplayScene
+
 
 ## Medium Priority
-Define various functions about Score and Combo
-Define various functions about Life
 Add a function that calculates the timeToWait from the timeToAppear et viceversa
 Add a feedback in the keyboard when a key is pressed
 
@@ -20,8 +17,12 @@ Make a first tutorial Level
 # DONE LIST
 
 ## High Priority
+Modify all the gameplayScene to add the actual interface
+Add Life to gameplayScene
 
 ## Medium Priority
+A function about Score and Combo
+A function functions about Life
 
 ## Low Priority
 
