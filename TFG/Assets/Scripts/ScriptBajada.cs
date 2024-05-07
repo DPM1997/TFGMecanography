@@ -89,7 +89,7 @@ public class ScriptBajada : MonoBehaviour
         firstTime = true;
         LoadGameObjects();
         createPercentajeSpanish();
-        backgroundMusic = (AudioClip)Resources.Load("Music/RandomLevel-38");
+        backgroundMusic = (AudioClip)Resources.Load("Audio/Music/RandomLevel-38");
 
     }
     // Start is called before the first frame update
