@@ -8,10 +8,7 @@ Add a function that calculates the timeToWait from the timeToAppear et viceversa
 Add a feedback in the keyboard when a key is pressed
 
 ## Low Priority
-Delete the examples scenes of UI, located in *TextMesh Pro* Unity
-Start desining the UI
-    -Desing a Menu for the sound and to reset the level
-    -Desing Main Manu
+
 Make a first tutorial Level
 
 # DONE LIST
@@ -25,6 +22,10 @@ A function about Score and Combo
 A function functions about Life
 
 ## Low Priority
+Delete the examples scenes of UI, located in *TextMesh Pro* Unity
+Start desining the UI
+    -Desing a Menu for the sound and to reset the level
+    -Desing Main Manu
 
 # CHANGE VERSION
 ## Version 0.2.1

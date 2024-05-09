@@ -42,12 +42,12 @@ public class Click : MonoBehaviour
           scored=true;
           Destroy(collisedObjectCollider.gameObject);
           //ReproducirSonido
-          SoundFXScript.instance.PlayAudio(hitAudio,1f,Types.sfx);
+          SoundFXScript.instance.PlayAudio(hitAudio,1f,MusicTypes.sfx);
           collisedObjectCollider=null;
           inside=false;
         } else if((Input.GetKeyDown(keyCode1) || Input.GetKeyDown(keyCode2) || Input.GetKeyDown(keyCode3) || Input.GetKeyDown(keyCode4)) && inside == false){
             score = Int32.Parse(scoreText.text);
-            SoundFXScript.instance.PlayAudio(missAudio,1f,Types.sfx);
+            SoundFXScript.instance.PlayAudio(missAudio,1f,MusicTypes.sfx);
             score = score - 5;
             scoreText.text=(""+score);
         }
