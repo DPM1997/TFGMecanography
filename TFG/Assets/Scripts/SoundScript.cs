@@ -5,14 +5,10 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public enum Types {master, sfx};
-
 public class SoundScript : MonoBehaviour
 {
-    [SerializeField] Slider soundSlider;
+    [SerializeField] List<Slider> soundSlider;
     [SerializeField] AudioMixer masterMixer;
-
-    public Types type = Types.master;
 
     // Start is called before the first frame update
     void Start()
@@ -25,32 +21,38 @@ public class SoundScript : MonoBehaviour
         if(value < 1){
             value = .001f;
         }
-
-        RefreshSlide(value);
+        RefreshSlide(value,Types.master);
         PlayerPrefs.SetFloat("SavedMasterVolume", value);
-        masterMixer.SetFloat("MasterVolume", Mathf.Log10(value / 100) * 20f);
+        PlayerPrefs.Save();
+        masterMixer.SetFloat("VolumeMusic", Mathf.Log10(value / 100) * 20f);
     }
 
     public void SetVolumeSFX(float value){
         if(value < 1){
             value = .001f;
         }
-
-        RefreshSlide(value);
+        Debug.Log("SFX");
+        RefreshSlide(value,Types.sfx);
         PlayerPrefs.SetFloat("SavedSFXVolume", value);
+        PlayerPrefs.Save();
         masterMixer.SetFloat("SFXVolume", Mathf.Log10(value / 100) * 20f);
     }
 
-    public void SetVolumeFromSlider(){
+    public void SetVolumeFromSlider(Types type){
         if (type == Types.master){
-            SetVolumeMaster(soundSlider.value);
+            SetVolumeMaster(soundSlider[0].value);
         }
         else{
-           SetVolumeSFX(soundSlider.value);
+            SetVolumeSFX(soundSlider[1].value);
         }
     }
 
-    public void RefreshSlide(float value){
-        soundSlider.value = value;
+    public void RefreshSlide(float value,Types type){
+        if (type == Types.master){
+        soundSlider[0].value = value;
+        }
+        else{
+        soundSlider[0].value = value;   
+        }
     }
 }
