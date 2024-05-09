@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,19 +37,17 @@ public class Click : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score = Int32.Parse(scoreText.text);
         if ((Input.GetKeyDown(keyCode1) || Input.GetKeyDown(keyCode2) || Input.GetKeyDown(keyCode3) || Input.GetKeyDown(keyCode4)) && inside == true){
-          Debug.Log("---inside:"+inside);
           //Se mete en la función pero no modifica la variable del score
-          Debug.Log((Input.GetKeyDown(keyCode1) || Input.GetKeyDown(keyCode2) || Input.GetKeyDown(keyCode3) || Input.GetKeyDown(keyCode4) && inside == true));
           scored=true;
           Destroy(collisedObjectCollider.gameObject);
           //ReproducirSonido
-          SoundFXScript.instance.PlayAudio(hitAudio,1f);
+          SoundFXScript.instance.PlayAudio(hitAudio,1f,Types.sfx);
           collisedObjectCollider=null;
           inside=false;
         } else if((Input.GetKeyDown(keyCode1) || Input.GetKeyDown(keyCode2) || Input.GetKeyDown(keyCode3) || Input.GetKeyDown(keyCode4)) && inside == false){
-            SoundFXScript.instance.PlayAudio(missAudio,1f);
+            score = Int32.Parse(scoreText.text);
+            SoundFXScript.instance.PlayAudio(missAudio,1f,Types.sfx);
             score = score - 5;
             scoreText.text=(""+score);
         }

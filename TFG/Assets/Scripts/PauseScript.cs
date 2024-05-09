@@ -24,7 +24,8 @@ public class PauseScript : MonoBehaviour
     }
     public void Home()
     {
-        SceneManager.LoadScene("Main menu");
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
     }
     public void Resume()
     {
