@@ -69,9 +69,9 @@ public class Click : MonoBehaviour
         combo = Int32.Parse(comboText.text);
         score = Int32.Parse(scoreText.text);
         if(other.tag==keyCode1.ToString())inside = false;
-        else if(other.tag==keyCode1.ToString())inside = false;
-        else if(other.tag==keyCode1.ToString())inside = false;
-        else if(other.tag==keyCode1.ToString())inside = false;
+        else if(other.tag==keyCode2.ToString())inside = false;
+        else if(other.tag==keyCode3.ToString())inside = false;
+        else if(other.tag==keyCode4.ToString())inside = false;
         if(scored==true){
             score = (int)(score+100+100*combo*0.01);
             scoreText.text=(""+score);
