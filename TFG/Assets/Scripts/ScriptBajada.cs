@@ -97,7 +97,7 @@ public class ScriptBajada : MonoBehaviour
             if (randomModeMusic)
             {
                 spawningSpeed = 1.6f;
-                SoundFXScript.instance.PlayAudio(backgroundMusic, 1f, Types.master);
+                SoundFXScript.instance.PlayAudio(backgroundMusic, 1f, MusicTypes.music);
             }
             StartCoroutine(CreateObjectRandomV2());
             //StartCoroutine(CreateObjectRandom());

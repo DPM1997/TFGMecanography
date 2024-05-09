@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -13,46 +12,66 @@ public class SoundScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetVolumeMaster(PlayerPrefs.GetFloat("SavedMasterVolume", 100));
-        SetVolumeSFX(PlayerPrefs.GetFloat("SavedSFXVolume", 100));
+        SetVolumeGeneral(PlayerPrefs.GetFloat("SavedGeneralVolume", 100));
+        SetVolumeMusic(PlayerPrefs.GetFloat("SavedMusicVolume", 100));
+        SetVolumeSFX(PlayerPrefs.GetFloat("SavedVolumeSFX", 100));
     }
 
-    public void SetVolumeMaster(float value){
-        if(value < 1){
+    public void SetVolumeGeneral(float value)
+    {
+        if (value < 1)
+        {
             value = .001f;
         }
-        RefreshSlide(value,Types.master);
-        PlayerPrefs.SetFloat("SavedMasterVolume", value);
+        RefreshSlide(value, MusicTypes.general);
+        PlayerPrefs.SetFloat("SavedGeneralVolume", value);
+        PlayerPrefs.Save();
+        masterMixer.SetFloat("VolumeGeneral", Mathf.Log10(value / 100) * 20f);
+    }
+
+    public void SetVolumeMusic(float value)
+    {
+        if (value < 1)
+        {
+            value = .001f;
+        }
+        RefreshSlide(value, MusicTypes.music);
+        PlayerPrefs.SetFloat("SavedMusicVolume", value);
         PlayerPrefs.Save();
         masterMixer.SetFloat("VolumeMusic", Mathf.Log10(value / 100) * 20f);
     }
 
-    public void SetVolumeSFX(float value){
-        if(value < 1){
+    public void SetVolumeSFX(float value)
+    {
+        if (value < 1)
+        {
             value = .001f;
         }
-        Debug.Log("SFX");
-        RefreshSlide(value,Types.sfx);
-        PlayerPrefs.SetFloat("SavedSFXVolume", value);
+        RefreshSlide(value, MusicTypes.sfx);
+        PlayerPrefs.SetFloat("SavedVolumeSFX", value);
         PlayerPrefs.Save();
-        masterMixer.SetFloat("SFXVolume", Mathf.Log10(value / 100) * 20f);
+        masterMixer.SetFloat("VolumeSFX", Mathf.Log10(value / 100) * 20f);
     }
 
-    public void SetVolumeFromSlider(Types type){
-        if (type == Types.master){
-            SetVolumeMaster(soundSlider[0].value);
-        }
-        else{
-            SetVolumeSFX(soundSlider[1].value);
-        }
+    public void SetVolumeFromSlider(String type)
+    {
+        if (type == MusicTypes.general.ToString())
+            SetVolumeGeneral(soundSlider[0].value);
+        else if (type == MusicTypes.music.ToString())
+            SetVolumeMusic(soundSlider[1].value);
+        else if (type == MusicTypes.sfx.ToString())
+            SetVolumeSFX(soundSlider[2].value);
+
     }
 
-    public void RefreshSlide(float value,Types type){
-        if (type == Types.master){
-        soundSlider[0].value = value;
-        }
-        else{
-        soundSlider[0].value = value;   
-        }
+    public void RefreshSlide(float value, MusicTypes type)
+    {
+        //soundSlider[(int) type].value = value;
+        if (type == MusicTypes.general)
+            soundSlider[0].value = value;
+        else if (type == MusicTypes.music)
+            soundSlider[1].value = value;
+        else soundSlider[2].value = value;
+
     }
 }

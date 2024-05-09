@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public enum Types {master, sfx};
+public enum MusicTypes {general, music, sfx};
 
 public class SoundFXScript : MonoBehaviour
 {
@@ -26,8 +26,8 @@ public class SoundFXScript : MonoBehaviour
     { 
     }
 
-    public void PlayAudio(AudioClip audioClip, float volume, Types type){
-        if (type == Types.master){
+    public void PlayAudio(AudioClip audioClip, float volume, MusicTypes type){
+        if (type == MusicTypes.music){
             sources[0].volume = volume;
             sources[0].outputAudioMixerGroup = mixer[0];
             sources[0].clip= audioClip;
