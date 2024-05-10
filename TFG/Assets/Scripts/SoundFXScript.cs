@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+
+public enum MusicTypes {general, music, sfx};
 
 public class SoundFXScript : MonoBehaviour
 {
     public static SoundFXScript instance;
-    //[SerializeField] private AudioSource soundFXObject;
+    [SerializeField] private List<AudioMixerGroup> mixer;
+
+    [SerializeField] private List<AudioSource> sources;
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,13 +26,17 @@ public class SoundFXScript : MonoBehaviour
     { 
     }
 
-    public void PlayAudio(AudioClip audioClip, float volume){
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.playOnAwake = false;
-        audioSource.clip = audioClip;
-        audioSource.volume = volume;
-        audioSource.Play();
-        float lenght = audioSource.clip.length;
-        Destroy(audioSource,lenght);
+    public void PlayAudio(AudioClip audioClip, float volume, MusicTypes type){
+        if (type == MusicTypes.music){
+            sources[0].volume = volume;
+            sources[0].outputAudioMixerGroup = mixer[0];
+            sources[0].clip= audioClip;
+            sources[0].Play();
+        }
+        else{
+            sources[1].volume = volume;
+            sources[1].outputAudioMixerGroup = mixer[1];
+            sources[1].PlayOneShot(audioClip);
+        }
     }
 }

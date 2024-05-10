@@ -1,12 +1,9 @@
-using System.Security.Cryptography;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using System.IO;
 using System.Text;
 using System;
-using System.Linq;
 
 public class LevelKey
 {
@@ -72,11 +69,11 @@ public class ScriptBajada : MonoBehaviour
     public GameObject topScreen;
     private GameObject movingObject;
     public float downspeed;
-    public bool randomMode;
+    public static bool randomMode = true;
     public bool randomModeMusic;
     public bool spanish;
     private float spawningSpeed;
-    public string levelPath;
+    public static string levelPath;
     private Vector2 velocity;
     private AudioClip backgroundMusic;
     private string lastLetter;
@@ -89,7 +86,7 @@ public class ScriptBajada : MonoBehaviour
         firstTime = true;
         LoadGameObjects();
         createPercentajeSpanish();
-        backgroundMusic = (AudioClip)Resources.Load("Music/RandomLevel-38");
+        backgroundMusic = (AudioClip)Resources.Load("Audio/Music/RandomLevel-38");
 
     }
     // Start is called before the first frame update
@@ -100,7 +97,7 @@ public class ScriptBajada : MonoBehaviour
             if (randomModeMusic)
             {
                 spawningSpeed = 1.6f;
-                SoundFXScript.instance.PlayAudio(backgroundMusic, 1f);
+                SoundFXScript.instance.PlayAudio(backgroundMusic, 1f, MusicTypes.music);
             }
             StartCoroutine(CreateObjectRandomV2());
             //StartCoroutine(CreateObjectRandom());
@@ -322,7 +319,7 @@ public class ScriptBajada : MonoBehaviour
             if (firstTime)
             {
                 firstTime = false;
-                Debug.Log("First Time" + firstTime);
+                //Debug.Log("First Time" + firstTime);
                 random = UnityEngine.Random.Range(0, letterListOnlyMiddleRow.Count);
                 actualLetter = (GameObject)letterListOnlyMiddleRow[random];
                 random = UnityEngine.Random.Range(0, letterList.Count);
@@ -330,7 +327,7 @@ public class ScriptBajada : MonoBehaviour
             }
             else
             {
-                Debug.Log("First Time" + firstTime);
+                //Debug.Log("First Time" + firstTime);
                 random = UnityEngine.Random.Range(0, letterList.Count);
                 actualLetter = nextLetter;
                 nextLetter = (GameObject)letterList[random];
