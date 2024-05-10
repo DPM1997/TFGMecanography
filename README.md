@@ -1,4 +1,6 @@
 # TFGMecanography
+### Version 0.2.2
+Added the UI in the Game, minor changes like keyboard feedback
 ### Version 0.2.1
 Defined spanish frecuency in random mode
 ## Version 0.2.0
