@@ -6531,7 +6531,6 @@ GameObject:
   - component: {fileID: 1914751113}
   - component: {fileID: 1914751115}
   - component: {fileID: 1914751116}
-  - component: {fileID: 1914751117}
   m_Layer: 0
   m_Name: ScriptingObject
   m_TagString: Untagged
@@ -6568,6 +6567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topScreen: {fileID: 581103601}
   downspeed: 0.1
+  spawnRate: 0.32
   randomModeMusic: 1
   spanish: 1
 --- !u!114 &1914751114
@@ -6618,46 +6618,6 @@ MonoBehaviour:
   - {fileID: 1208766586}
   - {fileID: 1783454918}
   masterMixer: {fileID: 24100000, guid: c9c55304880b65943982750e5e85b4da, type: 2}
---- !u!114 &1914751117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1914751111}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b70281e217f5df14fa38ef67cad09fef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyCodeList: 71000000770000006500000072000000740000007900000075000000690000006f000000700000006100000073000000640000006600000067000000680000006a0000006b0000006c0000007a000000780000006300000076000000620000006e0000006d000000
-  feedbackList:
-  - {fileID: 1063356374}
-  - {fileID: 1468492521}
-  - {fileID: 791067530}
-  - {fileID: 68094369}
-  - {fileID: 1992542646}
-  - {fileID: 1991367946}
-  - {fileID: 403075210}
-  - {fileID: 176097343}
-  - {fileID: 330463234}
-  - {fileID: 2023939943}
-  - {fileID: 1417204328}
-  - {fileID: 665312893}
-  - {fileID: 1508266930}
-  - {fileID: 1673132529}
-  - {fileID: 667589845}
-  - {fileID: 1978755530}
-  - {fileID: 1773829111}
-  - {fileID: 2085035547}
-  - {fileID: 918325939}
-  - {fileID: 378620114}
-  - {fileID: 1828659958}
-  - {fileID: 808403932}
-  - {fileID: 300301694}
-  - {fileID: 193864536}
-  - {fileID: 1314020308}
-  - {fileID: 1129071754}
 --- !u!1 &1930936161
 GameObject:
   m_ObjectHideFlags: 0
