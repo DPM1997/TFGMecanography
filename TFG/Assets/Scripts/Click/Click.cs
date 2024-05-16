@@ -54,6 +54,7 @@ public class Click : MonoBehaviour
                         //ReproducirSonido
                         SoundFXScript.instance.PlayAudio(hitAudio, 1f, MusicTypes.sfx);
                         scored2=true;
+                        break;
                     }
                 }
                 if(scored==false&&scored2==false){
@@ -96,6 +97,9 @@ public class Click : MonoBehaviour
             scoreText.text = ("" + score);
             Destroy(other.gameObject);
             slider.value--;
+        }
+        if(slider.value<=0){
+            //Mostrar escena de gameOver
         }
     }
 

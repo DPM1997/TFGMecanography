@@ -1,14 +1,13 @@
 # TO DO LIST
 
 ## High Priority
-Change the Click.cs function and delete the colliders to make an unique collider
 Define the numbers of Levels to add in the prototipe in the memory
 
 ## Medium Priority
 Add a function that calculates the timeToWait from the timeToAppear et viceversa
 Make the random level panel
 Define the leatherboard system
-Define the UserProfiles
+
 
 ## Low Priority
 Design an implement the EndGame screen
@@ -17,8 +16,10 @@ Make a first tutorial Level
 # DONE LIST
 
 ## High Priority
+Change the Click.cs function and delete the colliders to make an unique collider
 
 ## Medium Priority
+Define the UserProfiles
 
 ## Low Priority
 
