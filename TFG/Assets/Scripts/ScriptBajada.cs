@@ -86,7 +86,7 @@ public class ScriptBajada : MonoBehaviour
 
     //Static Elements, that are serialized from Menu
     public static bool randomMode = true;
-    public static Difficulty dificulty = Difficulty.Medium;
+    public static Difficulty dificulty = Difficulty.Hard;
     public static string levelPath;
     void Awake()
     {

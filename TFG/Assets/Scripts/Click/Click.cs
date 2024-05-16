@@ -9,18 +9,23 @@ public class Click : MonoBehaviour
     [SerializeField] private List<KeyCode> keyCodeList;
     [SerializeField] private List<GameObject> feedbackList;
     private List<Collider2D> collisedObjectColliderList;
-    private TMP_Text scoreText;
-    private TMP_Text comboText;
     [SerializeField] private AudioClip hitAudio;
     [SerializeField] private AudioClip missAudio;
     public GameObject scoreObject;
     public GameObject comboObject;
-    [SerializeField] private Slider slider;
+
     int score;
     int combo;
     bool scored;
     bool scored2;
 
+    //UI Elements
+    private TMP_Text scoreText;
+    private TMP_Text comboText;
+    [SerializeField] private Slider slider;
+
+    [SerializeField] private GameObject EndMenu;
+    [SerializeField] private TMP_Text EndMenuScoreText;
     // Start is called before the first frame update
     void Start()
     {
@@ -100,6 +105,11 @@ public class Click : MonoBehaviour
         }
         if(slider.value<=0){
             //Mostrar escena de gameOver
+            Time.timeScale = 0;
+            EndMenuScoreText.text = scoreText.text;
+            EndMenu.SetActive(true);
+            //Llamamos al leaderboard
+            this.GetComponent<Leaderboard>().SubmitUser(score);
         }
     }
 

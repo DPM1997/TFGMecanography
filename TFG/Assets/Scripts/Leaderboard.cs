@@ -1,18 +1,21 @@
-using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
 using System.IO;
+using System.Text;
 
 
-public class PlayerInfo: IComparable<PlayerInfo>{
+public class PlayerInfo : IComparable<PlayerInfo>
+{
     public string name;
     public int score;
 
     public static string levelPath;
 
-    public PlayerInfo(string name, int score){
+    public PlayerInfo(string name, int score)
+    {
         this.name = name;
         this.score = score;
     }
@@ -26,11 +29,14 @@ public class PlayerInfo: IComparable<PlayerInfo>{
         }
         return other.score.CompareTo(score); // Orden descendente por puntuación
     }
+    
+    public override string ToString(){
+        return name+';'+score;
+    }  
 }
 public class Leaderboard : MonoBehaviour
 {
     SortedSet<PlayerInfo> collectedStats;
-    [SerializeField] TMP_Text score_text;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,18 +48,57 @@ public class Leaderboard : MonoBehaviour
     {
     }
 
-    private void SubmitUser(){
-        PlayerInfo stats = new PlayerInfo(PlayerPrefs.GetString("User", "default"),Int32.Parse(score_text.text));
+    public void SubmitUser(int score)
+    {
+        ImportLeatherBoard();
+        PlayerInfo stats = new PlayerInfo(PlayerPrefs.GetString("User", "default"), score);
         collectedStats.Add(stats);
+        ExportLeaderBoard();
     }
 
-    void ImportLeatherBoard(){
-        
+    void ImportLeatherBoard()
+    {
+        string route;
+        if (ScriptBajada.randomMode == true)
+        {
+            route = "./Assets/LeaderBoard/random-" + ScriptBajada.dificulty.ToString() + ".csv";
+        }
+        else
+        {
+            String levelPath = ScriptBajada.levelPath;
+            string level = levelPath.Split('/').Last().Split('.').First();
+            route = "./Assets/LeaderBoard/random-" + level + ".csv";
+        }
+        try
+        {
+            foreach (string line in File.ReadLines(route, Encoding.UTF8))
+            {
+                string[] words = line.Split(';');
+                PlayerInfo player = new PlayerInfo(words[0], Int32.Parse(words[1]));
+                collectedStats.Add(player);
+            }
+        }
+        catch (System.Exception)
+        {
+            Debug.Log("No existe el documento");
+        }
+
     }
 
     void ExportLeaderBoard()
     {
-        using (StreamWriter writer = new StreamWriter("./Assets/Levels/level.csv"))
+        string route;
+        if (ScriptBajada.randomMode == true)
+        {
+            route = "./Assets/LeaderBoard/random-" + ScriptBajada.dificulty.ToString() + ".csv";
+        }
+        else
+        {
+            String levelPath = ScriptBajada.levelPath;
+            string level = levelPath.Split('/').Last().Split('.').First();
+            route = "./Assets/LeaderBoard/random-" + level + ".csv";
+        }
+        using (StreamWriter writer = new StreamWriter(route))
         {
             foreach (PlayerInfo player in collectedStats)
                 writer.WriteLine(player.ToString());

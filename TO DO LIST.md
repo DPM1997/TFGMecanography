@@ -6,8 +6,6 @@ Define the numbers of Levels to add in the prototipe in the memory
 ## Medium Priority
 Add a function that calculates the timeToWait from the timeToAppear et viceversa
 Make the random level panel
-Define the leatherboard system
-
 
 ## Low Priority
 Design an implement the EndGame screen
@@ -20,6 +18,8 @@ Change the Click.cs function and delete the colliders to make an unique collider
 
 ## Medium Priority
 Define the UserProfiles
+Added difficulty selector, it's hardcoder right now
+Define the leatherboard system
 
 ## Low Priority
 
