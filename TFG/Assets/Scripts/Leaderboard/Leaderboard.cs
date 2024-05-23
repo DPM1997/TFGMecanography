@@ -29,18 +29,24 @@ public class PlayerInfo : IComparable<PlayerInfo>
         }
         return other.score.CompareTo(score); // Orden descendente por puntuación
     }
-    
-    public override string ToString(){
-        return name+';'+score;
-    }  
+
+    public override string ToString()
+    {
+        return name + ';' + score;
+    }
 }
 public class Leaderboard : MonoBehaviour
 {
     SortedSet<PlayerInfo> collectedStats;
+    [SerializeField] private Transform _entryDisplayParent;
+    [SerializeField] private LeaderBoardDisplay _entryDisplayPrefab;
     // Start is called before the first frame update
     void Start()
     {
         collectedStats = new SortedSet<PlayerInfo>();
+        Debug.Log(this.name);
+        Debug.Log(_entryDisplayParent.ToString());
+        Debug.Log(_entryDisplayPrefab.ToString());
     }
 
     // Update is called once per frame
@@ -54,6 +60,26 @@ public class Leaderboard : MonoBehaviour
         PlayerInfo stats = new PlayerInfo(PlayerPrefs.GetString("User", "default"), score);
         collectedStats.Add(stats);
         ExportLeaderBoard();
+        OnLeaderboardLoaded(collectedStats.ToList());
+    }
+
+    private void OnLeaderboardLoaded(List<PlayerInfo> collectedStats)
+    {
+        int rank = 1;
+        Debug.Log(rank);
+        foreach (var t in collectedStats)
+        {
+            CreateEntryDisplay(t, rank);
+            rank++;
+        }
+    }
+
+    private void CreateEntryDisplay(PlayerInfo entry, int rank)
+    {
+        Debug.Log(rank);
+        
+        var entryDisplay = Instantiate(_entryDisplayPrefab.gameObject, _entryDisplayParent);
+        entryDisplay.GetComponent<LeaderBoardDisplay>().SetEntry(entry, rank, false);
     }
 
     void ImportLeatherBoard()

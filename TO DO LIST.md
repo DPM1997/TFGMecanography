@@ -8,13 +8,13 @@ Add a function that calculates the timeToWait from the timeToAppear et viceversa
 Make the random level panel
 
 ## Low Priority
-Design an implement the EndGame screen
 Make a first tutorial Level
 
 # DONE LIST
 
 ## High Priority
 Change the Click.cs function and delete the colliders to make an unique collider
+Add a LeaderBoard in the UI, make it reusable
 
 ## Medium Priority
 Define the UserProfiles
@@ -22,6 +22,7 @@ Added difficulty selector, it's hardcoder right now
 Define the leatherboard system
 
 ## Low Priority
+Design an implement the EndGame screen
 
 # CHANGE VERSION
 ## Version 0.2.2
