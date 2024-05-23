@@ -106,8 +106,6 @@ public class ScriptBajada : MonoBehaviour
                 SoundFXScript.instance.PlayAudio(backgroundMusic, 1f, MusicTypes.music);
             }
             StartCoroutine(CreateObjectRandomV3());
-            //StartCoroutine(CreateObjectRandom());
-            //StartCoroutine(CreateObjectRandomMiddleRow());
         }
         else
             TestLevel();

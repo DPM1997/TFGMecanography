@@ -44,9 +44,6 @@ public class Leaderboard : MonoBehaviour
     void Start()
     {
         collectedStats = new SortedSet<PlayerInfo>();
-        Debug.Log(this.name);
-        Debug.Log(_entryDisplayParent.ToString());
-        Debug.Log(_entryDisplayPrefab.ToString());
     }
 
     // Update is called once per frame
@@ -66,7 +63,6 @@ public class Leaderboard : MonoBehaviour
     private void OnLeaderboardLoaded(List<PlayerInfo> collectedStats)
     {
         int rank = 1;
-        Debug.Log(rank);
         foreach (var t in collectedStats)
         {
             CreateEntryDisplay(t, rank);
@@ -76,8 +72,6 @@ public class Leaderboard : MonoBehaviour
 
     private void CreateEntryDisplay(PlayerInfo entry, int rank)
     {
-        Debug.Log(rank);
-        
         var entryDisplay = Instantiate(_entryDisplayPrefab.gameObject, _entryDisplayParent);
         entryDisplay.GetComponent<LeaderBoardDisplay>().SetEntry(entry, rank, false);
     }
@@ -91,7 +85,7 @@ public class Leaderboard : MonoBehaviour
         }
         else
         {
-            String levelPath = ScriptBajada.levelPath;
+            string levelPath = ScriptBajada.levelPath;
             string level = levelPath.Split('/').Last().Split('.').First();
             route = "./Assets/LeaderBoard/random-" + level + ".csv";
         }
@@ -109,6 +103,27 @@ public class Leaderboard : MonoBehaviour
             Debug.Log("No existe el documento");
         }
 
+    }
+
+    public void ImportLeatherBoardMenu(int difficulty)
+    {
+        string route;
+        Difficulty aux = (Difficulty)difficulty;
+        route = "./Assets/LeaderBoard/random-" + aux.ToString() + ".csv";
+        try
+        {
+            foreach (string line in File.ReadLines(route, Encoding.UTF8))
+            {
+                string[] words = line.Split(';');
+                PlayerInfo player = new PlayerInfo(words[0], Int32.Parse(words[1]));
+                collectedStats.Add(player);
+            }
+        }
+        catch (System.Exception)
+        {
+            Debug.Log("No existe el documento");
+        }
+        OnLeaderboardLoaded(collectedStats.ToList());
     }
 
     void ExportLeaderBoard()
