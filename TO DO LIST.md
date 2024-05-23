@@ -1,18 +1,27 @@
 # TO DO LIST
 
 ## High Priority
-Change the Click.cs function and delete the colliders to make an unique collider
 Define the numbers of Levels to add in the prototipe in the memory
+Change all the letters to 3d
+If needed, change how the letters spawn
 
 ## Medium Priority
 Add a function that calculates the timeToWait from the timeToAppear et viceversa
-Make the random level panel
-Define the leatherboard system
-Define the UserProfiles
+Move the camara to add depth
+Add a background for the gamezone, that differs for background
+Add an Text to identify the hitzone
+Create a menu for the SelectLevels
 
 ## Low Priority
-Design an implement the EndGame screen
 Make a first tutorial Level
+Modify all the icons to white and define the buttons things
+Modify all the letter to white
+Define the interactions with the letters
+Add the English dicctionary in the code
+Create code in ScriptBajada for the lenguages
+Design a custom keyboard
+Delete all the unused code in the Project
+Delete all the unused objets in the Project
 
 # DONE LIST
 
@@ -23,15 +32,27 @@ Make a first tutorial Level
 ## Low Priority
 
 # CHANGE VERSION
+## Version 0.3.0
+### High Priority
+Change the Click.cs function and delete the colliders to make an unique collider
+Add a LeaderBoard in the UI, make it reusable
+### Medium Priority
+Define the UserProfiles
+Added difficulty selector, it's hardcoder right now
+Define the leatherboard system
+Make the random level panel
+### Low Priority
+Design an implement the EndGame screen
+
 ## Version 0.2.2
-## High Priority
+### High Priority
 Modify all the gameplayScene to add the actual interface
 Add Life to gameplayScene
-## Medium Priority
+### Medium Priority
 A function about Score and Combo
 A function functions about Life
 Add a feedback in the keyboard when a key is pressed
-## Low Priority
+### Low Priority
 Delete the examples scenes of UI, located in *TextMesh Pro* Unity
 Start desining the UI
     -Desing a Menu for the sound and to reset the level
