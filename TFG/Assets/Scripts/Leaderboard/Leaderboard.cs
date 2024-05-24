@@ -29,14 +29,17 @@ public class PlayerInfo : IComparable<PlayerInfo>
         }
         return other.score.CompareTo(score); // Orden descendente por puntuación
     }
-    
-    public override string ToString(){
-        return name+';'+score;
-    }  
+
+    public override string ToString()
+    {
+        return name + ';' + score;
+    }
 }
 public class Leaderboard : MonoBehaviour
 {
     SortedSet<PlayerInfo> collectedStats;
+    [SerializeField] private Transform _entryDisplayParent;
+    [SerializeField] private LeaderBoardDisplay _entryDisplayPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +57,23 @@ public class Leaderboard : MonoBehaviour
         PlayerInfo stats = new PlayerInfo(PlayerPrefs.GetString("User", "default"), score);
         collectedStats.Add(stats);
         ExportLeaderBoard();
+        OnLeaderboardLoaded(collectedStats.ToList());
+    }
+
+    private void OnLeaderboardLoaded(List<PlayerInfo> collectedStats)
+    {
+        int rank = 1;
+        foreach (var t in collectedStats)
+        {
+            CreateEntryDisplay(t, rank);
+            rank++;
+        }
+    }
+
+    private void CreateEntryDisplay(PlayerInfo entry, int rank)
+    {
+        var entryDisplay = Instantiate(_entryDisplayPrefab.gameObject, _entryDisplayParent);
+        entryDisplay.GetComponent<LeaderBoardDisplay>().SetEntry(entry, rank, false);
     }
 
     void ImportLeatherBoard()
@@ -65,7 +85,7 @@ public class Leaderboard : MonoBehaviour
         }
         else
         {
-            String levelPath = ScriptBajada.levelPath;
+            string levelPath = ScriptBajada.levelPath;
             string level = levelPath.Split('/').Last().Split('.').First();
             route = "./Assets/LeaderBoard/random-" + level + ".csv";
         }
@@ -83,6 +103,27 @@ public class Leaderboard : MonoBehaviour
             Debug.Log("No existe el documento");
         }
 
+    }
+
+    public void ImportLeatherBoardMenu(int difficulty)
+    {
+        string route;
+        Difficulty aux = (Difficulty)difficulty;
+        route = "./Assets/LeaderBoard/random-" + aux.ToString() + ".csv";
+        try
+        {
+            foreach (string line in File.ReadLines(route, Encoding.UTF8))
+            {
+                string[] words = line.Split(';');
+                PlayerInfo player = new PlayerInfo(words[0], Int32.Parse(words[1]));
+                collectedStats.Add(player);
+            }
+        }
+        catch (System.Exception)
+        {
+            Debug.Log("No existe el documento");
+        }
+        OnLeaderboardLoaded(collectedStats.ToList());
     }
 
     void ExportLeaderBoard()

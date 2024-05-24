@@ -103,12 +103,9 @@ public class ScriptBajada : MonoBehaviour
         {
             if (randomModeMusic)
             {
-                spawningSpeed = 1.6f;
                 SoundFXScript.instance.PlayAudio(backgroundMusic, 1f, MusicTypes.music);
             }
             StartCoroutine(CreateObjectRandomV3());
-            //StartCoroutine(CreateObjectRandom());
-            //StartCoroutine(CreateObjectRandomMiddleRow());
         }
         else
             TestLevel();
@@ -246,7 +243,6 @@ public class ScriptBajada : MonoBehaviour
     IEnumerator CreateObjectRandomV3()
     {
         //Definir la velocidad según la dificultad
-
         settingSpeedAndSpawnRate();
         //Cambiar funcion para que se calcule la siguiente no la anterior
         while (true)
