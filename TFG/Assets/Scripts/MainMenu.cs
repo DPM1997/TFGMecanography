@@ -61,4 +61,26 @@ public class MainMenu : MonoBehaviour
 
         }
     }
+
+    public void setLanguage(int language)
+    {
+        switch (language)
+        {
+            case 0:
+                ScriptBajada.language = true;
+                ScriptBajada.english = true;
+                break;
+            case 1:
+                ScriptBajada.language = true;
+                ScriptBajada.english = false;
+                break;
+            case 2:
+                ScriptBajada.language = false;
+                break;
+            default:
+                ScriptBajada.language = false;
+                break;
+
+        }
+    }
 }
