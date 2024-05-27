@@ -37,13 +37,12 @@ public class PlayerInfo : IComparable<PlayerInfo>
 }
 public class Leaderboard : MonoBehaviour
 {
-    SortedSet<PlayerInfo> collectedStats;
+    SortedSet<PlayerInfo> collectedStats =  new SortedSet<PlayerInfo>();
     [SerializeField] private Transform _entryDisplayParent;
     [SerializeField] private LeaderBoardDisplay _entryDisplayPrefab;
     // Start is called before the first frame update
     void Start()
     {
-        collectedStats = new SortedSet<PlayerInfo>();
     }
 
     // Update is called once per frame
@@ -105,7 +104,7 @@ public class Leaderboard : MonoBehaviour
 
     }
 
-    public void ImportLeatherBoardMenu(int difficulty)
+    public void ImportLeatherBoardRandom(int difficulty)
     {
         string route;
         Difficulty aux = (Difficulty)difficulty;
@@ -126,6 +125,28 @@ public class Leaderboard : MonoBehaviour
         OnLeaderboardLoaded(collectedStats.ToList());
     }
 
+    public List<PlayerInfo> ImportLeatherBoardLevel(string level)
+    {
+        string route;
+        route = "./Assets/LeaderBoard/level-" + level + ".csv";
+        try
+        {
+            foreach (string line in File.ReadLines(route, Encoding.UTF8))
+            {
+                string[] words = line.Split(';');
+                PlayerInfo player = new PlayerInfo(words[0], Int32.Parse(words[1]));
+                collectedStats.Add(player);
+            }
+        }
+        catch (System.Exception)
+        {
+            Debug.Log("No existe el documento");
+        }
+        List<PlayerInfo> returnList = collectedStats.ToList();
+        OnLeaderboardLoaded(returnList);
+        return returnList;
+    }
+
     void ExportLeaderBoard()
     {
         string route;
@@ -137,7 +158,7 @@ public class Leaderboard : MonoBehaviour
         {
             String levelPath = ScriptBajada.levelPath;
             string level = levelPath.Split('/').Last().Split('.').First();
-            route = "./Assets/LeaderBoard/random-" + level + ".csv";
+            route = "./Assets/LeaderBoard/level-" + level + ".csv";
         }
         using (StreamWriter writer = new StreamWriter(route))
         {

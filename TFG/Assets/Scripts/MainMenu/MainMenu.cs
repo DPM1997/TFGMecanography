@@ -11,11 +11,27 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private TMP_InputField field;
     [SerializeField] private SoundScript script;
     [SerializeField] GameObject randomMenu;
+
+    private LevelSelector levelSelector;
     //[SerializeField] ToggleGroup dificultyToogle;
     // Start is called before the first frame update
     void Start()
     {
         field.text = PlayerPrefs.GetString("User", "default");
+        levelSelector = GetComponent<LevelSelector>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+            levelSelector.changeLevel(false);
+        if (Input.GetKeyDown(KeyCode.D))
+            levelSelector.changeLevel(true);
+        if (Input.GetKeyDown(KeyCode.Q))
+            levelSelector.changeWorld(false);
+        if (Input.GetKeyDown(KeyCode.E))
+            levelSelector.changeWorld(true);
+
     }
 
     public void enableRandomMenu()
