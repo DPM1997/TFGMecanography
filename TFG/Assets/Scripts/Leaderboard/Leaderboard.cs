@@ -37,13 +37,12 @@ public class PlayerInfo : IComparable<PlayerInfo>
 }
 public class Leaderboard : MonoBehaviour
 {
-    SortedSet<PlayerInfo> collectedStats;
+    SortedSet<PlayerInfo> collectedStats =  new SortedSet<PlayerInfo>();
     [SerializeField] private Transform _entryDisplayParent;
     [SerializeField] private LeaderBoardDisplay _entryDisplayPrefab;
     // Start is called before the first frame update
     void Start()
     {
-        collectedStats = new SortedSet<PlayerInfo>();
     }
 
     // Update is called once per frame

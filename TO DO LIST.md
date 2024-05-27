@@ -9,12 +9,9 @@ If needed, change how the letters spawn
 Add a function that calculates the timeToWait from the timeToAppear et viceversa
 Move the camara to add depth
 
-Create a menu for the SelectLevels
-
 ## Low Priority
 Make a first tutorial Level
 Modify all the icons to white and define the buttons things
-Modify all the letter to white
 Define the interactions with the letters
 Design a custom keyboard
 Delete all the unused code in the Project
@@ -27,10 +24,12 @@ Delete all the unused objets in the Project
 ## Medium Priority
 Add a background for the gamezone, that differs for background
 Add an Text to identify the hitzone
+Create a menu for the SelectLevels
 
 ## Low Priority
 Add the English dicctionary in the code
 Create code in ScriptBajada for the lenguages
+Modify all the letter to white
 
 
 # CHANGE VERSION

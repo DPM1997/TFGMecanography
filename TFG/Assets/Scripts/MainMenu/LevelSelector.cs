@@ -28,6 +28,7 @@ public class LevelSelector : MonoBehaviour
         worldsText[1].text = worldsList[0];
         worldsText[2].text = worldsList[1];
         levelText.text = worlds[worldsText[1].text][0];
+        Debug.Log(leaderboard);
         leaderboard.ImportLeatherBoardLevel(worldsText[1].text + levelText.text);
     }
 

@@ -3513,7 +3513,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 108.333336, y: -25}
+  m_AnchoredPosition: {x: 108.33334, y: -25}
   m_SizeDelta: {x: 216.66667, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &489876827
@@ -6691,7 +6691,7 @@ MonoBehaviour:
   - {fileID: 489876827}
   - {fileID: 120369}
   - {fileID: 1551779275}
-  leaderboard: {fileID: 0}
+  leaderboard: {fileID: 1900091016}
   durationValue: {fileID: 0}
   scoreValue: {fileID: 0}
 --- !u!1 &919066163
@@ -12752,7 +12752,7 @@ RectTransform:
   m_Father: {fileID: 1746210164}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -7.869995}
   m_SizeDelta: {x: 20, y: 35.74}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12885,7 +12885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1900091015
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13019,7 +13019,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: ./Assets/Levels/level.csv
+          m_StringArgument: ./Assets/Levels/level 1-copia 1.csv
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1907157507

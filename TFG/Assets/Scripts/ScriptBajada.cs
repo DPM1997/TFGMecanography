@@ -4,6 +4,7 @@ using UnityEngine;
 using System.IO;
 using System.Text;
 using System;
+using UnityEditor.Search;
 
 public class LevelKey
 {
@@ -101,7 +102,12 @@ public class ScriptBajada : MonoBehaviour
             else
                 createPercentajeSpanish();
         settingSpeedAndSpawnRate();
-        backgroundMusic = (AudioClip)Resources.Load("Audio/Music/RandomLevel-38");
+        if(!randomMode)
+            ReadLevel();
+        else
+            backgroundMusic = (AudioClip)Resources.Load("Audio/Music/RandomLevel-38");
+
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -118,7 +124,7 @@ public class ScriptBajada : MonoBehaviour
                 StartCoroutine(CreateObjectRandomV3());
         }
         else
-            TestLevel();
+           TestLevel();
     }
 
     // Update is called once per frame
@@ -303,8 +309,7 @@ public class ScriptBajada : MonoBehaviour
     }
     void TestLevel()
     {
-        //CreateLevel();
-        ReadLevel();
+        SoundFXScript.instance.PlayAudio(backgroundMusic, 1f, MusicTypes.music);
         StartCoroutine(PlayLevel());
     }
 
@@ -321,24 +326,29 @@ public class ScriptBajada : MonoBehaviour
     void ReadLevel()
     {
         levelList = new ArrayList();
+        bool firstLine = true;
         foreach (string line in File.ReadLines(levelPath, Encoding.UTF8))
         {
+            if(firstLine){
+            firstLine=false;
+            string[] words = line.Split(';');
+            backgroundMusic = (AudioClip)Resources.Load(words[0]);
+            Debug.Log(words[1]);
+            Movement.speed= float.Parse(words[1]);
+            }else{
             string[] words = line.Split(';');
             LevelKey key = new LevelKey(words[0], Int32.Parse(words[1]), Int32.Parse(words[2]));
             levelList.Add(key);
+            }
         }
     }
 
-//TODO Review this code to match gameplay
     private IEnumerator PlayLevel()
     {
         foreach (LevelKey levelKey in levelList)
         {
-            Rigidbody2D rb2D;
             GameObject letter = dicctionaryList[levelKey.getKey()];
             movingObject = Instantiate(letter, new Vector3(letter.transform.position.x, topScreen.transform.position.y, 0), Quaternion.identity);
-            rb2D = movingObject.AddComponent<Rigidbody2D>();
-            rb2D.bodyType = RigidbodyType2D.Kinematic;
             //velocity = new Vector2(0, -downspeed);
             //StartCoroutine(MoveObject(movingObject, 0.05f, rb2D));
             yield return new WaitForSeconds((float)(levelKey.getTimeToWait() / 1000.0));
