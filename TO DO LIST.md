@@ -6,12 +6,10 @@ Change all the letters to 3d
 If needed, change how the letters spawn
 
 ## Medium Priority
-Add a function that calculates the timeToWait from the timeToAppear et viceversa
 Move the camara to add depth
 
 ## Low Priority
 Make a first tutorial Level
-Modify all the icons to white and define the buttons things
 Define the interactions with the letters
 Design a custom keyboard
 Delete all the unused code in the Project
@@ -22,17 +20,23 @@ Delete all the unused objets in the Project
 ## High Priority
 
 ## Medium Priority
+
+## Low Priority
+
+# CHANGE VERSION
+## Version 0.3.1
+## High Priority
+## Medium Priority
 Add a background for the gamezone, that differs for background
 Add an Text to identify the hitzone
 Create a menu for the SelectLevels
-
+Add a function that calculates the timeToWait from the timeToAppear et viceversa
 ## Low Priority
 Add the English dicctionary in the code
 Create code in ScriptBajada for the lenguages
 Modify all the letter to white
 
-
-# CHANGE VERSION
+Modify all the icons to white and define the buttons things
 ## Version 0.3.0
 ### High Priority
 Change the Click.cs function and delete the colliders to make an unique collider

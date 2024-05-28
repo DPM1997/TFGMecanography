@@ -1,5 +1,7 @@
 # TFGMecanography
-### Version 0.3
+### Version 0.3.1
+Added all the funtionality in the game, all the UI and features is done
+## Version 0.3
 Added the leaderboard system, all the UI of the gameplay scene is done
 ### Version 0.2.2
 Added the UI in the Game, minor changes like keyboard feedback
