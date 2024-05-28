@@ -10293,9 +10293,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 913104960}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: randomMode
+      - m_Target: {fileID: 913104964}
+        m_TargetAssemblyTypeName: LevelSelector, Assembly-CSharp
+        m_MethodName: loadLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

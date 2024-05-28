@@ -33,6 +33,20 @@ public class LevelKey
     {
         return timeToWait;
     }
+
+    public int getTimeToAppear()
+    {
+        return timeToAppear;
+    }
+
+    public void setTimeToWait(int timeToWait){
+        this.timeToWait = timeToWait;
+    }
+
+    public void setTimeToAppear(int timeToAppear){
+        this.timeToAppear = timeToAppear;
+    }
+    
 }
 
 public class KeyRandom
@@ -321,6 +335,39 @@ public class ScriptBajada : MonoBehaviour
         using (StreamWriter writer = new StreamWriter("./Assets/Levels/level.csv"))
         {
             foreach (LevelKey levelKey in levelList)
+                writer.WriteLine(levelKey.ToString());
+        }
+    }
+
+    public static void ConvertTimeToWait(string path, bool timeToWait){
+        List<LevelKey> levelListAux = new List<LevelKey>();
+        bool firstLine = true;
+        foreach (string line in File.ReadLines(path, Encoding.UTF8))
+        {
+            if(firstLine){
+            firstLine=false;
+            }else{
+            string[] words = line.Split(';');
+            LevelKey key = new LevelKey(words[0], Int32.Parse(words[1]), Int32.Parse(words[2]));
+            levelListAux.Add(key);
+            }
+        }
+        int accumulatedValue=0;
+        for(int i = 0; i < levelListAux.Count; i++){
+        if(timeToWait){
+            levelListAux[i].setTimeToAppear(accumulatedValue);
+            accumulatedValue+=levelListAux[i].getTimeToWait();
+        }
+        else{
+            if (i < levelListAux.Count - 1){
+                int nextValue = levelListAux[i+1].getTimeToAppear();
+                levelListAux[i].setTimeToWait(nextValue-levelListAux[i].getTimeToAppear());
+            }
+        }
+        }
+        using (StreamWriter writer = new StreamWriter("./Assets/Levels/level.csv"))
+        {
+            foreach (LevelKey levelKey in levelListAux)
                 writer.WriteLine(levelKey.ToString());
         }
     }
