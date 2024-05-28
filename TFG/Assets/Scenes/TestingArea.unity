@@ -2570,6 +2570,7 @@ MonoBehaviour:
   slider: {fileID: 1019752478}
   EndMenu: {fileID: 404034338}
   EndMenuScoreText: {fileID: 2112325458}
+  EndMenuText: {fileID: 2044564813}
 --- !u!114 &664505224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5832,7 +5833,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1930069356}
   m_HandleRect: {fileID: 1930069355}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -8135,6 +8136,7 @@ MonoBehaviour:
   spawnRate: 0.32
   randomModeMusic: 1
   spanish: 1
+  click: {fileID: 664505223}
 --- !u!114 &1914751114
 MonoBehaviour:
   m_ObjectHideFlags: 0

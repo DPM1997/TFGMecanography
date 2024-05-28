@@ -61,6 +61,8 @@ public class Leaderboard : MonoBehaviour
 
     private void OnLeaderboardLoaded(List<PlayerInfo> collectedStats)
     {
+        foreach (Transform t in _entryDisplayParent) 
+            Destroy(t.gameObject);
         int rank = 1;
         foreach (var t in collectedStats)
         {
@@ -77,6 +79,7 @@ public class Leaderboard : MonoBehaviour
 
     void ImportLeatherBoard()
     {
+        collectedStats = new SortedSet<PlayerInfo>();
         string route;
         if (ScriptBajada.randomMode == true)
         {
@@ -86,7 +89,7 @@ public class Leaderboard : MonoBehaviour
         {
             string levelPath = ScriptBajada.levelPath;
             string level = levelPath.Split('/').Last().Split('.').First();
-            route = "./Assets/LeaderBoard/random-" + level + ".csv";
+            route = "./Assets/LeaderBoard/level-" + level + ".csv";
         }
         try
         {
@@ -106,6 +109,7 @@ public class Leaderboard : MonoBehaviour
 
     public void ImportLeatherBoardRandom(int difficulty)
     {
+        collectedStats = new SortedSet<PlayerInfo>();
         string route;
         Difficulty aux = (Difficulty)difficulty;
         route = "./Assets/LeaderBoard/random-" + aux.ToString() + ".csv";
@@ -127,6 +131,7 @@ public class Leaderboard : MonoBehaviour
 
     public List<PlayerInfo> ImportLeatherBoardLevel(string level)
     {
+        collectedStats = new SortedSet<PlayerInfo>();
         string route;
         route = "./Assets/LeaderBoard/level-" + level + ".csv";
         try

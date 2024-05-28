@@ -92,6 +92,8 @@ public class ScriptBajada : MonoBehaviour
     public static string levelPath;
     public static bool language = true;
     public static bool english = true;
+
+    [SerializeField] Click click;
     void Awake()
     {
         spawningSpeed = 1f;
@@ -353,6 +355,13 @@ public class ScriptBajada : MonoBehaviour
             //StartCoroutine(MoveObject(movingObject, 0.05f, rb2D));
             yield return new WaitForSeconds((float)(levelKey.getTimeToWait() / 1000.0));
         }
+        //After that, when the movingObject is deleted that means that the level is finshed
+        StartCoroutine(CheckIfObjectIsDestroyed());
     }
-
+    private IEnumerator CheckIfObjectIsDestroyed(){
+        while(movingObject!=null){
+            yield return new WaitForSeconds(1.0f);
+        }
+        click.EndLevel("HAS GANADO");
+    }
 }

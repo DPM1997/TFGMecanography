@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private TMP_InputField field;
     [SerializeField] private SoundScript script;
-    [SerializeField] GameObject randomMenu;
+    [SerializeField] GameObject randomMenu,levelMenu;
 
     private LevelSelector levelSelector;
     //[SerializeField] ToggleGroup dificultyToogle;
@@ -38,6 +38,9 @@ public class MainMenu : MonoBehaviour
     {
         randomMenu.SetActive(true);
         //this.GetComponents<Leaderboard>
+    }
+    public void enableLevelMenu(){
+        levelMenu.SetActive(true);
     }
 
     public void randomMode()

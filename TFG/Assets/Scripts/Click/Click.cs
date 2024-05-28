@@ -25,7 +25,7 @@ public class Click : MonoBehaviour
     [SerializeField] private Slider slider;
 
     [SerializeField] private GameObject EndMenu;
-    [SerializeField] private TMP_Text EndMenuScoreText;
+    [SerializeField] private TMP_Text EndMenuScoreText, EndMenuText;
     // Start is called before the first frame update
     void Start()
     {
@@ -105,12 +105,16 @@ public class Click : MonoBehaviour
         }
         if(slider.value<=0){
             //Mostrar escena de gameOver
+            EndLevel("Perdiste Mas suerte la proxima vez");
+        }
+    }
+    public void EndLevel(string text){
             Time.timeScale = 0;
+            EndMenuText.text = text;
             EndMenuScoreText.text = scoreText.text;
             EndMenu.SetActive(true);
             //Llamamos al leaderboard
             this.GetComponent<Leaderboard>().SubmitUser(score);
-        }
     }
 
 }

@@ -16,6 +16,7 @@ public class LevelSelector : MonoBehaviour
     [SerializeField] TMP_Text levelText;
     [SerializeField] TMP_Text[] worldsText;
     [SerializeField] Leaderboard leaderboard;
+    [SerializeField] MainMenu menu;
     [SerializeField] TMP_Text durationValue, scoreValue;
     // Start is called before the first frame update
     void Start()
@@ -26,10 +27,12 @@ public class LevelSelector : MonoBehaviour
         //TODO Comprobar si hay menos de 3 mundos
         worldsText[0].text = worldsList[worldsList.Count - 1];
         worldsText[1].text = worldsList[0];
-        worldsText[2].text = worldsList[1];
+        if(worldsList.Count!=1)
+            worldsText[2].text = worldsList[1];
+        else
+            worldsText[2].text = worldsList[0];
         levelText.text = worlds[worldsText[1].text][0];
-        Debug.Log(leaderboard);
-        leaderboard.ImportLeatherBoardLevel(worldsText[1].text + levelText.text);
+        loadLevelMetadata();
     }
 
     private void LoadData()
@@ -68,7 +71,6 @@ public class LevelSelector : MonoBehaviour
             else
                 worldsText[2].text = worldsList[actualIndex + 1];
             levelText.text = worlds[worldsText[1].text][0];
-
         }
         else
         {
@@ -81,6 +83,7 @@ public class LevelSelector : MonoBehaviour
                 worldsText[0].text = worldsList[actualIndex - 1];
             levelText.text = worlds[worldsText[1].text][0];
         }
+        loadLevelMetadata();
     }
 
 
@@ -98,11 +101,12 @@ public class LevelSelector : MonoBehaviour
             levelText.text = world[world.Count - 1];
         else
             levelText.text = world[actualIndex - 1];
+        loadLevelMetadata();
     }
 
     private void loadLevelMetadata()
     {
-        List<PlayerInfo> playerInfos = leaderboard.ImportLeatherBoardLevel(worldsText[1].text + levelText.text);
+        List<PlayerInfo> playerInfos = leaderboard.ImportLeatherBoardLevel(worldsText[1].text +'-'+ levelText.text);
         //TODO Meterse en nivel y cargar datos de Duración
         string user = PlayerPrefs.GetString("User", "default");
         foreach (PlayerInfo player in playerInfos)
@@ -111,6 +115,9 @@ public class LevelSelector : MonoBehaviour
 
     }
 
+    public void loadLevel(){
+        menu.levelMode("./Assets/Levels/"+worldsText[1].text+levelText.text+".csv");
+    }
     // Update is called once per frame
     void Update()
     {
