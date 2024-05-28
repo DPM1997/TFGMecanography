@@ -24,10 +24,9 @@ public class LevelSelector : MonoBehaviour
         LoadData();
         worldsList = new List<string>(worlds.Keys);
         //CargarObjetos de Niveles
-        //TODO Comprobar si hay menos de 3 mundos
         worldsText[0].text = worldsList[worldsList.Count - 1];
         worldsText[1].text = worldsList[0];
-        if(worldsList.Count!=1)
+        if (worldsList.Count != 1)
             worldsText[2].text = worldsList[1];
         else
             worldsText[2].text = worldsList[0];
@@ -106,17 +105,22 @@ public class LevelSelector : MonoBehaviour
 
     private void loadLevelMetadata()
     {
-        List<PlayerInfo> playerInfos = leaderboard.ImportLeatherBoardLevel(worldsText[1].text +'-'+ levelText.text);
-        //TODO Meterse en nivel y cargar datos de Duración
+        List<PlayerInfo> playerInfos = leaderboard.ImportLeatherBoardLevel(worldsText[1].text + '-' + levelText.text);
+        string line = File.ReadLines("./Assets/Levels/" + worldsText[1].text + '-' + levelText.text + ".csv", Encoding.UTF8).First();
+        string[] words = line.Split(';');
+        durationValue.text = words[2];
         string user = PlayerPrefs.GetString("User", "default");
         foreach (PlayerInfo player in playerInfos)
             if (player.name == user)
+            {
                 scoreValue.text = player.score + "";
-
+                break;
+            }
     }
 
-    public void loadLevel(){
-        menu.levelMode("./Assets/Levels/"+worldsText[1].text+levelText.text+".csv");
+    public void loadLevel()
+    {
+        menu.levelMode("./Assets/Levels/" + worldsText[1].text + '-' + levelText.text + ".csv");
     }
     // Update is called once per frame
     void Update()
