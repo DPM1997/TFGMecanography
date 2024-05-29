@@ -8168,6 +8168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenu: {fileID: 1177229051}
+  soundFXScript: {fileID: 1914751114}
 --- !u!114 &1914751116
 MonoBehaviour:
   m_ObjectHideFlags: 0

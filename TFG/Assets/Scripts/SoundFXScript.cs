@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -26,17 +27,27 @@ public class SoundFXScript : MonoBehaviour
     { 
     }
 
-    public void PlayAudio(AudioClip audioClip, float volume, MusicTypes type){
+    public void PlayAudio(AudioClip audioClip, float volume, MusicTypes type, float delayed){
         if (type == MusicTypes.music){
             sources[0].volume = volume;
             sources[0].outputAudioMixerGroup = mixer[0];
             sources[0].clip= audioClip;
-            sources[0].Play();
+            sources[0].PlayDelayed(delayed);
         }
         else{
             sources[1].volume = volume;
             sources[1].outputAudioMixerGroup = mixer[1];
             sources[1].PlayOneShot(audioClip);
         }
+    }
+    
+    public void Pause(){
+        foreach(AudioSource source in sources)
+            source.Pause();
+    }
+
+    public void Resume(){
+        foreach(AudioSource source in sources)
+            source.UnPause();
     }
 }

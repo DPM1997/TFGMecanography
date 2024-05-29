@@ -18,6 +18,9 @@ public class Click : MonoBehaviour
     int combo;
     bool scored;
     bool scored2;
+    //Debug varibles
+    bool createLevels;
+    float pressTime= 0f;
 
     //UI Elements
     private TMP_Text scoreText;
@@ -32,7 +35,9 @@ public class Click : MonoBehaviour
         score = 0;
         scored = false;
         scored2 = false;
+        createLevels = false;
         combo = 0;
+        pressTime = Time.time;
         slider.value = 20;
         collisedObjectColliderList =new List<Collider2D>();
         scoreText = scoreObject.GetComponent<TMP_Text>();
@@ -46,6 +51,12 @@ public class Click : MonoBehaviour
         {
             if (Input.GetKeyDown(keyCodeList[i]))
             {
+                if (createLevels==true){
+                    float pressTime2=Time.time;
+                    float auxTime = pressTime2- pressTime;
+                    pressTime=pressTime2;
+                    Debug.Log(keyCodeList[i].ToString()+';'+auxTime.ToString());
+                }
                 feedbackList[i].SetActive(true);
                 for (int y = 0; y < collisedObjectColliderList.Count; y++)
                 {
@@ -57,13 +68,13 @@ public class Click : MonoBehaviour
                         collisedObjectColliderList.Remove(collisedObjectColliderList[y]);
                         Destroy(destroyCollider.gameObject);
                         //ReproducirSonido
-                        SoundFXScript.instance.PlayAudio(hitAudio, 1f, MusicTypes.sfx);
+                        SoundFXScript.instance.PlayAudio(hitAudio, 1f, MusicTypes.sfx,0);
                         scored2=true;
                         break;
                     }
                 }
                 if(scored==false&&scored2==false){
-                SoundFXScript.instance.PlayAudio(missAudio, 1f, MusicTypes.sfx);
+                SoundFXScript.instance.PlayAudio(missAudio, 1f, MusicTypes.sfx,0);
                 score = score - 5;
                 scoreText.text = ("" + score);
                 }
@@ -73,6 +84,8 @@ public class Click : MonoBehaviour
             if (Input.GetKeyUp(keyCodeList[i]))
                 feedbackList[i].SetActive(false);
         }
+        if(Input.GetKeyDown(KeyCode.Space))
+            createLevels = true;
     }
 
     void OnTriggerEnter2D(Collider2D other)
