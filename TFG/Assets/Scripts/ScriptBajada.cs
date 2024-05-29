@@ -100,6 +100,8 @@ public class ScriptBajada : MonoBehaviour
     private float spawningSpeed;
     private AudioClip backgroundMusic;
 
+    private float delayed = 0;
+
     //Static Elements, that are serialized from Menu
     public static bool randomMode = true;
     public static Difficulty dificulty = Difficulty.Easy;
@@ -132,7 +134,7 @@ public class ScriptBajada : MonoBehaviour
         {
             if (randomModeMusic)
             {
-                SoundFXScript.instance.PlayAudio(backgroundMusic, 1f, MusicTypes.music);
+                SoundFXScript.instance.PlayAudio(backgroundMusic, 1f, MusicTypes.music,0);
             }
             if (language)
                 StartCoroutine(CreateObjectLanguage());
@@ -325,7 +327,7 @@ public class ScriptBajada : MonoBehaviour
     }
     void TestLevel()
     {
-        SoundFXScript.instance.PlayAudio(backgroundMusic, 1f, MusicTypes.music);
+        SoundFXScript.instance.PlayAudio(backgroundMusic, 1f, MusicTypes.music,delayed);
         StartCoroutine(PlayLevel());
     }
 
@@ -382,8 +384,10 @@ public class ScriptBajada : MonoBehaviour
             firstLine=false;
             string[] words = line.Split(';');
             backgroundMusic = (AudioClip)Resources.Load(words[0]);
-            Debug.Log(words[1]);
             Movement.speed= float.Parse(words[1]);
+            Debug.Log(Movement.speed);
+            Debug.Log(words[1]);
+            delayed = float.Parse(words[3]);
             }else{
             string[] words = line.Split(';');
             LevelKey key = new LevelKey(words[0], Int32.Parse(words[1]), Int32.Parse(words[2]));
