@@ -400,8 +400,9 @@ public class ScriptBajada : MonoBehaviour
     {
         foreach (LevelKey levelKey in levelList)
         {
+            if(levelKey.getKey()!="None"){
             GameObject letter = dicctionaryList[levelKey.getKey()];
-            movingObject = Instantiate(letter, new Vector3(letter.transform.position.x, topScreen.transform.position.y, 0), Quaternion.identity);
+            movingObject = Instantiate(letter, new Vector3(letter.transform.position.x, topScreen.transform.position.y, 0), Quaternion.identity);}
             //velocity = new Vector2(0, -downspeed);
             //StartCoroutine(MoveObject(movingObject, 0.05f, rb2D));
             yield return new WaitForSeconds((float)(levelKey.getTimeToWait() / 1000.0));
