@@ -118,7 +118,7 @@ public class Click : MonoBehaviour
         }
         if(slider.value<=0){
             //Mostrar escena de gameOver
-            EndLevel("Perdiste Mas suerte la proxima vez");
+            EndLevel("You Lose More luck next time");
         }
     }
     public void EndLevel(string text){
