@@ -268,7 +268,7 @@ public class ScriptBajada : MonoBehaviour
             //Debug.Log("First Time" + firstTime);
             random = UnityEngine.Random.Range(0, letterList.Count);
             actualLetter = (GameObject)letterList[random];
-            movingObject = Instantiate(actualLetter, new Vector3(actualLetter.transform.position.x, topScreen.transform.position.y, 0), Quaternion.identity);
+            movingObject = Instantiate(actualLetter, new Vector3(actualLetter.transform.position.x, topScreen.transform.position.y, -0.2f), Quaternion.identity);
             yield return new WaitForSeconds(spawningSpeed);
         }
     }
@@ -284,7 +284,7 @@ public class ScriptBajada : MonoBehaviour
             random = UnityEngine.Random.Range(0.0f, sumTotalPercentageList);
             int index = BinarySearch(random, percentageList);
             actualLetter = (GameObject)letterList[index];
-            movingObject = Instantiate(actualLetter, new Vector3(actualLetter.transform.position.x, topScreen.transform.position.y, 0), Quaternion.identity);
+            movingObject = Instantiate(actualLetter, new Vector3(actualLetter.transform.position.x, topScreen.transform.position.y, -0.2f), Quaternion.identity);
             yield return new WaitForSeconds(spawningSpeed);
         }
     }
@@ -402,7 +402,7 @@ public class ScriptBajada : MonoBehaviour
         {
             if(levelKey.getKey()!="None"){
             GameObject letter = dicctionaryList[levelKey.getKey()];
-            movingObject = Instantiate(letter, new Vector3(letter.transform.position.x, topScreen.transform.position.y, 0), Quaternion.identity);}
+            movingObject = Instantiate(letter, new Vector3(letter.transform.position.x, topScreen.transform.position.y, -0.2f), Quaternion.identity);}
             //velocity = new Vector2(0, -downspeed);
             //StartCoroutine(MoveObject(movingObject, 0.05f, rb2D));
             yield return new WaitForSeconds((float)(levelKey.getTimeToWait() / 1000.0));
@@ -414,6 +414,6 @@ public class ScriptBajada : MonoBehaviour
         while(movingObject!=null){
             yield return new WaitForSeconds(1.0f);
         }
-        click.EndLevel("HAS GANADO");
+        click.EndLevel("YOU WIN");
     }
 }
