@@ -114,7 +114,7 @@ public class Click : MonoBehaviour
             score = score - 20;
             scoreText.text = ("" + score);
             Destroy(other.gameObject);
-            slider.value--;
+            //TODOslider.value--;
         }
         if(slider.value<=0){
             //Mostrar escena de gameOver
