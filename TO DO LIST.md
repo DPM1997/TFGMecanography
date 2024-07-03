@@ -35,8 +35,8 @@ Add a function that calculates the timeToWait from the timeToAppear et viceversa
 Add the English dicctionary in the code
 Create code in ScriptBajada for the lenguages
 Modify all the letter to white
-
 Modify all the icons to white and define the buttons things
+
 ## Version 0.3.0
 ### High Priority
 Change the Click.cs function and delete the colliders to make an unique collider
