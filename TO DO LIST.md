@@ -2,6 +2,20 @@
 
 ## High Priority
 Define the numbers of Levels to add in the prototipe in the memory
+
+## Medium Priority
+
+## Low Priority
+Define the interactions with the letters
+Design a custom keyboard
+Delete all the unused code in the Project
+Delete all the unused objets in the Project
+Review the default textures of UI and try to change the border
+
+
+# DONE LIST
+
+## High Priority
 Change all the letters to 3d
 If needed, change how the letters spawn
 
@@ -10,18 +24,6 @@ Move the camara to add depth
 
 ## Low Priority
 Make a first tutorial Level
-Define the interactions with the letters
-Design a custom keyboard
-Delete all the unused code in the Project
-Delete all the unused objets in the Project
-
-# DONE LIST
-
-## High Priority
-
-## Medium Priority
-
-## Low Priority
 
 # CHANGE VERSION
 ## Version 0.3.1
