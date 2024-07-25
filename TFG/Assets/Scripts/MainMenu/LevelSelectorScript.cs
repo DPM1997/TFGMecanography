@@ -8,15 +8,15 @@ using TMPro;
 using Unity.Collections;
 using UnityEngine;
 
-public class LevelSelector : MonoBehaviour
+public class LevelSelectorScript : MonoBehaviour
 {
 
     Dictionary<string, List<string>> worlds;
     List<string> worldsList;
     [SerializeField] TMP_Text levelText;
     [SerializeField] TMP_Text[] worldsText;
-    [SerializeField] Leaderboard leaderboard;
-    [SerializeField] MainMenu menu;
+    [SerializeField] LeaderboardScript leaderboard;
+    [SerializeField] MainMenuScript menu;
     [SerializeField] TMP_Text durationValue, scoreValue;
     // Start is called before the first frame update
     void Start()

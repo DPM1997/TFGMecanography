@@ -82,7 +82,7 @@ public enum Difficulty
     Hard,
 }
 
-public class ScriptBajada : MonoBehaviour
+public class LetterManagerScript : MonoBehaviour
 {
     private ArrayList letterList;
     private Dictionary<string, GameObject> dicctionaryList;
@@ -109,7 +109,7 @@ public class ScriptBajada : MonoBehaviour
     public static bool language = true;
     public static bool english = true;
 
-    [SerializeField] Click click;
+    [SerializeField] ClickScript click;
     void Awake()
     {
         spawningSpeed = 1f;
@@ -310,17 +310,17 @@ public class ScriptBajada : MonoBehaviour
     {
         if (dificulty == Difficulty.Easy)
         {
-            Movement.speed = 3f;
+            MovementScript.speed = 3f;
             spawningSpeed = 1.6f;
         }
         if (dificulty == Difficulty.Medium)
         {
-            Movement.speed = 4f;
+            MovementScript.speed = 4f;
             spawningSpeed = 0.8f;
         }
         if (dificulty == Difficulty.Hard)
         {
-            Movement.speed = 5f;
+            MovementScript.speed = 5f;
             spawningSpeed = 0.4f;
         }
 
@@ -384,8 +384,8 @@ public class ScriptBajada : MonoBehaviour
             firstLine=false;
             string[] words = line.Split(';');
             backgroundMusic = (AudioClip)Resources.Load(words[0]);
-            Movement.speed= float.Parse(words[1]);
-            Debug.Log(Movement.speed);
+            MovementScript.speed= float.Parse(words[1]);
+            Debug.Log(MovementScript.speed);
             Debug.Log(words[1]);
             delayed = float.Parse(words[3]);
             }else{

@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LeaderBoardDisplay : MonoBehaviour
+public class LeaderBoardDisplayScript : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _rankText, _usernameText, _scoreText;
 
