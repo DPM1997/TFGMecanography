@@ -35,11 +35,11 @@ public class PlayerInfo : IComparable<PlayerInfo>
         return name + ';' + score;
     }
 }
-public class Leaderboard : MonoBehaviour
+public class LeaderboardScript : MonoBehaviour
 {
     SortedSet<PlayerInfo> collectedStats =  new SortedSet<PlayerInfo>();
     [SerializeField] private Transform _entryDisplayParent;
-    [SerializeField] private LeaderBoardDisplay _entryDisplayPrefab;
+    [SerializeField] private LeaderBoardDisplayScript _entryDisplayPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -74,20 +74,20 @@ public class Leaderboard : MonoBehaviour
     private void CreateEntryDisplay(PlayerInfo entry, int rank)
     {
         var entryDisplay = Instantiate(_entryDisplayPrefab.gameObject, _entryDisplayParent);
-        entryDisplay.GetComponent<LeaderBoardDisplay>().SetEntry(entry, rank, false);
+        entryDisplay.GetComponent<LeaderBoardDisplayScript>().SetEntry(entry, rank, false);
     }
 
     void ImportLeatherBoard()
     {
         collectedStats = new SortedSet<PlayerInfo>();
         string route;
-        if (ScriptBajada.randomMode == true)
+        if (LetterManagerScript.randomMode == true)
         {
-            route = "./Assets/LeaderBoard/random-" + ScriptBajada.dificulty.ToString() + ".csv";
+            route = "./Assets/LeaderBoard/random-" + LetterManagerScript.dificulty.ToString() + ".csv";
         }
         else
         {
-            string levelPath = ScriptBajada.levelPath;
+            string levelPath = LetterManagerScript.levelPath;
             string level = levelPath.Split('/').Last().Split('.').First();
             route = "./Assets/LeaderBoard/level-" + level + ".csv";
         }
@@ -155,13 +155,13 @@ public class Leaderboard : MonoBehaviour
     void ExportLeaderBoard()
     {
         string route;
-        if (ScriptBajada.randomMode == true)
+        if (LetterManagerScript.randomMode == true)
         {
-            route = "./Assets/LeaderBoard/random-" + ScriptBajada.dificulty.ToString() + ".csv";
+            route = "./Assets/LeaderBoard/random-" + LetterManagerScript.dificulty.ToString() + ".csv";
         }
         else
         {
-            String levelPath = ScriptBajada.levelPath;
+            String levelPath = LetterManagerScript.levelPath;
             string level = levelPath.Split('/').Last().Split('.').First();
             route = "./Assets/LeaderBoard/level-" + level + ".csv";
         }

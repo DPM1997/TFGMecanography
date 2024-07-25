@@ -6,19 +6,19 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public class MainMenu : MonoBehaviour
+public class MainMenuScript : MonoBehaviour
 {
     [SerializeField] private TMP_InputField field;
     [SerializeField] private SoundScript script;
     [SerializeField] GameObject randomMenu,levelMenu;
 
-    private LevelSelector levelSelector;
+    private LevelSelectorScript levelSelector;
     //[SerializeField] ToggleGroup dificultyToogle;
     // Start is called before the first frame update
     void Start()
     {
         field.text = PlayerPrefs.GetString("User", "default");
-        levelSelector = GetComponent<LevelSelector>();
+        levelSelector = GetComponent<LevelSelectorScript>();
     }
 
     void Update()
@@ -45,15 +45,15 @@ public class MainMenu : MonoBehaviour
 
     public void randomMode()
     {
-        ScriptBajada.randomMode = true;
-        SceneManager.LoadScene("TestingArea");
+        LetterManagerScript.randomMode = true;
+        SceneManager.LoadScene("GameZone");
     }
 
     public void levelMode(string level)
     {
-        ScriptBajada.randomMode = false;
-        ScriptBajada.levelPath = level;
-        SceneManager.LoadScene("TestingArea");
+        LetterManagerScript.randomMode = false;
+        LetterManagerScript.levelPath = level;
+        SceneManager.LoadScene("GameZone");
     }
 
     public void submitUser()
@@ -66,16 +66,16 @@ public class MainMenu : MonoBehaviour
         switch (difficulty)
         {
             case 0:
-                ScriptBajada.dificulty = Difficulty.Easy;
+                LetterManagerScript.dificulty = Difficulty.Easy;
                 break;
             case 1:
-                ScriptBajada.dificulty = Difficulty.Medium;
+                LetterManagerScript.dificulty = Difficulty.Medium;
                 break;
             case 2:
-                ScriptBajada.dificulty = Difficulty.Hard;
+                LetterManagerScript.dificulty = Difficulty.Hard;
                 break;
             default:
-                ScriptBajada.dificulty = Difficulty.Easy;
+                LetterManagerScript.dificulty = Difficulty.Easy;
                 break;
 
         }
@@ -86,18 +86,18 @@ public class MainMenu : MonoBehaviour
         switch (language)
         {
             case 0:
-                ScriptBajada.language = true;
-                ScriptBajada.english = true;
+                LetterManagerScript.language = true;
+                LetterManagerScript.english = true;
                 break;
             case 1:
-                ScriptBajada.language = true;
-                ScriptBajada.english = false;
+                LetterManagerScript.language = true;
+                LetterManagerScript.english = false;
                 break;
             case 2:
-                ScriptBajada.language = false;
+                LetterManagerScript.language = false;
                 break;
             default:
-                ScriptBajada.language = false;
+                LetterManagerScript.language = false;
                 break;
 
         }

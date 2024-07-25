@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class MovementScript : MonoBehaviour
 {
     public static float speed = 0.1f; 
     // Start is called before the first frame update

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Click : MonoBehaviour
+public class ClickScript : MonoBehaviour
 {
     [SerializeField] private List<KeyCode> keyCodeList;
     [SerializeField] private List<GameObject> feedbackList;
@@ -127,7 +127,7 @@ public class Click : MonoBehaviour
             EndMenuScoreText.text = scoreText.text;
             EndMenu.SetActive(true);
             //Llamamos al leaderboard
-            this.GetComponent<Leaderboard>().SubmitUser(score);
+            this.GetComponent<LeaderboardScript>().SubmitUser(score);
     }
 
 }
