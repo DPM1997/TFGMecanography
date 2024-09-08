@@ -6,50 +6,72 @@ using System;
 using System.IO;
 using System.Text;
 
-
+/// <summary>
+/// Class with all the user score. Has a Name and a Score.
+/// </summary>
 public class PlayerInfo : IComparable<PlayerInfo>
 {
+    /// <summary>
+    /// Username
+    /// </summary>
     public string name;
+    /// <summary>
+    /// Score of the games.
+    /// </summary>
     public int score;
-
-    public static string levelPath;
-
+    /// <summary>
+    /// Parameterized constructors.
+    /// </summary>
+    /// <param name="name">Username</param>
+    /// <param name="score">Score of the game</param>
     public PlayerInfo(string name, int score)
     {
         this.name = name;
         this.score = score;
     }
-
+    /// <summary>
+    /// Descending order by score.
+    /// </summary>
     public int CompareTo(PlayerInfo other)
     {
-        // Comparar por puntuación, y si son iguales, comparar por nombre
+        // Descending order by score, if equals, will go with alphanumerical order.
         if (score == other.score)
         {
             return name.CompareTo(other.name);
         }
-        return other.score.CompareTo(score); // Orden descendente por puntuación
+        return other.score.CompareTo(score);
     }
-
+    /// <summary>
+    /// To string override.
+    /// </summary>
+    /// <returns>name;score</returns>
     public override string ToString()
     {
         return name + ';' + score;
     }
 }
+/// <summary>
+/// Script that manages all the data of the leaderboard.
+/// </summary>
 public class LeaderboardScript : MonoBehaviour
 {
-    SortedSet<PlayerInfo> collectedStats =  new SortedSet<PlayerInfo>();
+    /// <summary>
+    /// Ordered score list.
+    /// </summary>
+    private SortedSet<PlayerInfo> collectedStats =  new SortedSet<PlayerInfo>();
+    /// <summary>
+    /// The coordinates of the box with the leaderboard.
+    /// </summary>
     [SerializeField] private Transform _entryDisplayParent;
+    /// <summary>
+    /// The script that manages all the visualization of the leaderboard.
+    /// </summary>
     [SerializeField] private LeaderBoardDisplayScript _entryDisplayPrefab;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
+    /// <summary>
+    /// Function called at the end of a game to add a score.
+    /// </summary>
+    /// <param name="score">Integer value of the last game score.</param>
     public void SubmitUser(int score)
     {
         ImportLeatherBoard();
@@ -59,6 +81,10 @@ public class LeaderboardScript : MonoBehaviour
         OnLeaderboardLoaded(collectedStats.ToList());
     }
 
+    /// <summary>
+    /// Load the leaderboard in the scene.
+    /// </summary>
+    /// <param name="collectedStats">Ordered score list with the level.</param>
     private void OnLeaderboardLoaded(List<PlayerInfo> collectedStats)
     {
         foreach (Transform t in _entryDisplayParent) 
@@ -70,14 +96,22 @@ public class LeaderboardScript : MonoBehaviour
             rank++;
         }
     }
-
+    /// <summary>
+    /// Creates a leaderboard prefab with the actual data and rank.
+    /// </summary>
+    /// <param name="entry">Name and score of the player.</param>
+    /// <param name="rank">Rank assigned to the player.</param>
     private void CreateEntryDisplay(PlayerInfo entry, int rank)
     {
         var entryDisplay = Instantiate(_entryDisplayPrefab.gameObject, _entryDisplayParent);
         entryDisplay.GetComponent<LeaderBoardDisplayScript>().SetEntry(entry, rank, false);
     }
 
-    void ImportLeatherBoard()
+    /// <summary>
+    /// Loads the data from the saved leaderboards. Read the actual gamemode from the <see cref="LetterManagerScript">LetterManagerScript</see>.
+    /// and then loads the correct data.
+    /// </summary>
+    private void ImportLeatherBoard()
     {
         collectedStats = new SortedSet<PlayerInfo>();
         string route;
@@ -107,6 +141,11 @@ public class LeaderboardScript : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Only used in the MainMenu scene to load the data to the Random submenu, also load the leaderboard in the scene. 
+    /// Has to indicate the difficulty.
+    /// </summary>
+    /// <param name="difficulty">Value from 0 to 2. According to <see cref="Difficulty"/>Difficulty</param>
     public void ImportLeatherBoardRandom(int difficulty)
     {
         collectedStats = new SortedSet<PlayerInfo>();
@@ -128,7 +167,11 @@ public class LeaderboardScript : MonoBehaviour
         }
         OnLeaderboardLoaded(collectedStats.ToList());
     }
-
+    /// <summary>
+    /// Only used in the MainMenu scene to load the data to the Level submenu, also load the leaderboard in the scene. 
+    /// Has to indicate the level.
+    /// </summary>
+    /// <param name="level">Level name</param>
     public List<PlayerInfo> ImportLeatherBoardLevel(string level)
     {
         collectedStats = new SortedSet<PlayerInfo>();
@@ -152,7 +195,11 @@ public class LeaderboardScript : MonoBehaviour
         return returnList;
     }
 
-    void ExportLeaderBoard()
+    /// <summary>
+    /// Export the data from the actual leaderboards updated. Read the actual gamemode from the 
+    /// <see cref="LetterManagerScript">LetterManagerScript</see>.
+    /// </summary>
+    private void ExportLeaderBoard()
     {
         string route;
         if (LetterManagerScript.randomMode == true)

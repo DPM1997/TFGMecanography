@@ -6630,8 +6630,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1849c4b96fbd31d458ad6bdcbd8595ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  field: {fileID: 393974022}
-  script: {fileID: 913104956}
+  usernameField: {fileID: 393974022}
+  soundScript: {fileID: 913104956}
   randomMenu: {fileID: 1676010653}
   levelMenu: {fileID: 1900091014}
 --- !u!114 &913104961

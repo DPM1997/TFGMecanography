@@ -5,50 +5,81 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
+/// <summary>
+/// Script that manages all the functionality in the Main menu.
+/// </summary>
 public class MainMenuScript : MonoBehaviour
 {
-    [SerializeField] private TMP_InputField field;
-    [SerializeField] private SoundScript script;
-    [SerializeField] GameObject randomMenu,levelMenu;
-
+    /// <summary>
+    /// Field of the usermane.
+    /// </summary>
+    [SerializeField] private TMP_InputField usernameField;
+    /// <summary>
+    /// See <see cref="SoundScript"/>
+    /// </summary>
+    [SerializeField] private SoundScript soundScript;
+    /// <summary>
+    /// Other submenus.
+    /// </summary>
+    [SerializeField] GameObject randomMenu, levelMenu;
+    /// <summary>
+    /// See <see cref="LevelSelectorScript"/> 
+    /// </summary>
     private LevelSelectorScript levelSelector;
-    //[SerializeField] ToggleGroup dificultyToogle;
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// Write the username from the last username used. 
+    /// </summary>
+    private void Start()
     {
-        field.text = PlayerPrefs.GetString("User", "default");
+        usernameField.text = PlayerPrefs.GetString("User", "default");
         levelSelector = GetComponent<LevelSelectorScript>();
     }
 
-    void Update()
+    /// <summary>
+    /// To move the worlds in the level submenu
+    /// </summary>
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-            levelSelector.changeLevel(false);
-        if (Input.GetKeyDown(KeyCode.D))
-            levelSelector.changeLevel(true);
-        if (Input.GetKeyDown(KeyCode.Q))
-            levelSelector.changeWorld(false);
-        if (Input.GetKeyDown(KeyCode.E))
-            levelSelector.changeWorld(true);
-
+        if (levelMenu.activeInHierarchy == true)
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+                levelSelector.changeLevel(false);
+            if (Input.GetKeyDown(KeyCode.D))
+                levelSelector.changeLevel(true);
+            if (Input.GetKeyDown(KeyCode.Q))
+                levelSelector.changeWorld(false);
+            if (Input.GetKeyDown(KeyCode.E))
+                levelSelector.changeWorld(true);
+        }
     }
 
+    /// <summary>
+    /// Show RandomMenu.
+    /// </summary>
     public void enableRandomMenu()
     {
         randomMenu.SetActive(true);
-        //this.GetComponents<Leaderboard>
     }
-    public void enableLevelMenu(){
+    /// <summary>
+    /// Show LevelMenu.
+    /// </summary>
+    public void enableLevelMenu()
+    {
         levelMenu.SetActive(true);
     }
 
+    /// <summary>
+    /// Load the game with Random mode.
+    /// </summary>
     public void randomMode()
     {
         LetterManagerScript.randomMode = true;
         SceneManager.LoadScene("GameZone");
     }
-
+    /// <summary>
+    /// Load the game with Level mode.
+    /// </summary>
+    /// <param name="level">Path of the level to load.</param>
     public void levelMode(string level)
     {
         LetterManagerScript.randomMode = false;
@@ -56,11 +87,18 @@ public class MainMenuScript : MonoBehaviour
         SceneManager.LoadScene("GameZone");
     }
 
+    /// <summary>
+    /// Saves the user form the InputField.
+    /// </summary>
     public void submitUser()
     {
-        PlayerPrefs.SetString("User", field.text);
+        PlayerPrefs.SetString("User", usernameField.text);
     }
 
+    /// <summary>
+    /// Changes between 3 difficulties from Easy to Hard. Called from a Toogle in Random Menu.
+    /// </summary>
+    /// <param name="difficulty">Value from 0 to 2. According to <see cref="Difficulty"/>Difficulty</see>.</param>
     public void setDifficulty(int difficulty)
     {
         switch (difficulty)
@@ -81,6 +119,10 @@ public class MainMenuScript : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Changes between English, Spanish o None dictionary in Random mode. Called from a Toogle in Random Menu.
+    /// </summary>
+    /// <param name="language">Values from 0 to 2. 0 to English, 1 to Spanish and 2 to None.</param>
     public void setLanguage(int language)
     {
         switch (language)

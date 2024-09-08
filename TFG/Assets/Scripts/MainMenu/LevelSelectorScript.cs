@@ -8,22 +8,32 @@ using TMPro;
 using Unity.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Manages all the world system and levels from the Level sub-menu.
+/// </summary>
 public class LevelSelectorScript : MonoBehaviour
 {
-
-    Dictionary<string, List<string>> worlds;
-    List<string> worldsList;
-    [SerializeField] TMP_Text levelText;
-    [SerializeField] TMP_Text[] worldsText;
-    [SerializeField] LeaderboardScript leaderboard;
-    [SerializeField] MainMenuScript menu;
-    [SerializeField] TMP_Text durationValue, scoreValue;
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// Matrix where all the worlds are Saved.
+    /// </summary>
+    private Dictionary<string, List<string>> worlds;
+    /// <summary>
+    /// List or levels in the world.
+    /// </summary>
+    private List<string> worldsList;
+    [SerializeField] private TMP_Text levelText;
+    [SerializeField] private TMP_Text[] worldsText;
+    [SerializeField] private LeaderboardScript leaderboard;
+    [SerializeField] private MainMenuScript menu;
+    [SerializeField] private TMP_Text durationValue, scoreValue;
+    /// <summary>
+    /// Load all the worlds dictionary and then load the metadata of the level
+    /// </summary>
+    private void Start()
     {
         LoadData();
         worldsList = new List<string>(worlds.Keys);
-        //CargarObjetos de Niveles
+        //Load text in the submenu 
         worldsText[0].text = worldsList[worldsList.Count - 1];
         worldsText[1].text = worldsList[0];
         if (worldsList.Count != 1)
@@ -33,7 +43,9 @@ public class LevelSelectorScript : MonoBehaviour
         levelText.text = worlds[worldsText[1].text][0];
         loadLevelMetadata();
     }
-
+    /// <summary>
+    /// Load all the worlds dictionary.
+    /// </summary>
     private void LoadData()
     {
         string folderPath = "./Assets/Levels";
@@ -41,23 +53,27 @@ public class LevelSelectorScript : MonoBehaviour
         worlds = new Dictionary<string, List<string>>();
         foreach (var level in levels)
         {
-            // Dividir el string por '-'
+            // Divide the string by '-'.
             string fileName = Path.GetFileName(level);
             string[] parts = fileName.Split('-');
             string key = parts[0];
             string[] levelpath = parts[1].Split('.');
             string levelName = levelpath[0];
 
-            // Si el diccionario no contiene la clave, añadirla con una lista vacía
+            // If the dictionary does not contain the key, add it with an empty list.
             if (!worlds.ContainsKey(key))
             {
                 worlds[key] = new List<string>();
             }
-            // Añadir el string a la lista correspondiente en el diccionario  
+            // Add the string to the corresponding list in the dictionary. 
             worlds[key].Add(levelName);
         }
     }
 
+    /// <summary>
+    /// Change the current world forward or backwards. Also load the first level of the world.
+    /// </summary>
+    /// <param name="forward">True for going fordward or right. False for going backwards of left.</param>
     public void changeWorld(bool forward)
     {
         if (forward)
@@ -85,24 +101,30 @@ public class LevelSelectorScript : MonoBehaviour
         loadLevelMetadata();
     }
 
-
+    /// <summary>
+    /// Change the current level forward or backwards.
+    /// </summary>
+    /// <param name="forward">True for going fordward or right. False for going backwards of left.</param>
     public void changeLevel(bool forward)
     {
-        List<string> world = worlds[worldsText[1].text];
-        int actualIndex = world.IndexOf(levelText.text);
+        List<string> levels = worlds[worldsText[1].text];
+        int actualIndex = levels.IndexOf(levelText.text);
         if (forward)
-            if (actualIndex == world.Count - 1)
-                levelText.text = world[0];
+            if (actualIndex == levels.Count - 1)
+                levelText.text = levels[0];
             else
-                levelText.text = world[actualIndex + 1];
+                levelText.text = levels[actualIndex + 1];
         else
             if (actualIndex == 0)
-            levelText.text = world[world.Count - 1];
+            levelText.text = levels[levels.Count - 1];
         else
-            levelText.text = world[actualIndex - 1];
+            levelText.text = levels[actualIndex - 1];
         loadLevelMetadata();
     }
 
+    /// <summary>
+    /// Read the first line of the actual level and reeds the metadata from it. The level is in .csv format.
+    /// </summary>
     private void loadLevelMetadata()
     {
         List<PlayerInfo> playerInfos = leaderboard.ImportLeatherBoardLevel(worldsText[1].text + '-' + levelText.text);
@@ -118,13 +140,11 @@ public class LevelSelectorScript : MonoBehaviour
             }
     }
 
+    /// <summary>
+    /// Load the game with Level mode. Calls the MainMenuScript.
+    /// </summary>
     public void loadLevel()
     {
         menu.levelMode("./Assets/Levels/" + worldsText[1].text + '-' + levelText.text + ".csv");
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
