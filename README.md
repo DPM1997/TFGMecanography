@@ -1,4 +1,7 @@
 # TFGMecanography
+## Version 1.0.0
+Added all the levels, bug fixed
+
 ### Version 0.3.1
 Added all the funtionality in the game, all the UI and features is done
 ## Version 0.3

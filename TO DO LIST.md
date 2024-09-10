@@ -1,29 +1,31 @@
 # TO DO LIST
+## High Priority
+## Medium Priority
+## Low Priority
+# DONE LIST
+## High Priority
+## Medium Priority
+## Low Priority
 
+
+# CHANGE VERSION
+## Version 1.0.0
 ## High Priority
 Define the numbers of Levels to add in the prototipe in the memory
 Change all the letters to 3d
 If needed, change how the letters spawn
-
+Finished all the levels
+Finished documentation
+Exit funtionality in main menú
 ## Medium Priority
 Move the camara to add depth
-
 ## Low Priority
-Make a first tutorial Level
-Define the interactions with the letters
-Design a custom keyboard
-Delete all the unused code in the Project
 Delete all the unused objets in the Project
-
-# DONE LIST
-
-## High Priority
-
-## Medium Priority
-
-## Low Priority
-
-# CHANGE VERSION
+Delete all the unused code in the Project
+Define the interactions with the letters
+Review the default textures of UI and try to change the border
+Design a custom keyboard
+Make a first tutorial Level
 ## Version 0.3.1
 ## High Priority
 ## Medium Priority
@@ -35,8 +37,8 @@ Add a function that calculates the timeToWait from the timeToAppear et viceversa
 Add the English dicctionary in the code
 Create code in ScriptBajada for the lenguages
 Modify all the letter to white
-
 Modify all the icons to white and define the buttons things
+
 ## Version 0.3.0
 ### High Priority
 Change the Click.cs function and delete the colliders to make an unique collider
