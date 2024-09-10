@@ -4,7 +4,6 @@ using UnityEngine;
 using System.IO;
 using System.Text;
 using System;
-using UnityEditor.Search;
 
 /// <summary>
 /// Data of the letter in a level

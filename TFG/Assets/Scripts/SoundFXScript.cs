@@ -23,6 +23,10 @@ public class SoundFXScript : MonoBehaviour
     /// The AudioSources in the AudioMixer. The number is the same as MusicTypes lenght.
     /// </summary>
     [SerializeField] private List<AudioSource> sources;
+    // Variables to pause the game
+    private float pressTime= 0f;
+    private float delayedTime = 0f;
+     private float resumeTime = 0f;
     /// <summary>
     /// Intances the singleton.
     /// </summary>
@@ -46,6 +50,8 @@ public class SoundFXScript : MonoBehaviour
             sources[0].outputAudioMixerGroup = mixer[0];
             sources[0].clip= audioClip;
             sources[0].PlayDelayed(delayed);
+            delayedTime = delayed;
+            pressTime = Time.time;
         }
         else{
             sources[1].volume = volume;
@@ -57,14 +63,27 @@ public class SoundFXScript : MonoBehaviour
     /// Pause all audios.
     /// </summary>
     public void Pause(){
-        foreach(AudioSource source in sources)
-            source.Pause();
+        for(int i =0; i< sources.Count; i++){
+            if(i == 0){
+                float pressTime2=Time.time;
+                float auxTime = pressTime2- pressTime;
+                if (auxTime < delayedTime)
+                    resumeTime = delayedTime-auxTime;
+                else
+                    resumeTime = 0f; 
+            }
+            sources[i].Pause();
+        }
     }
     /// <summary>
     /// Resume all audios
     /// </summary>
-    public void Resume(){
-        foreach(AudioSource source in sources)
-            source.UnPause();
+    public IEnumerator Resume(){
+        for(int i =0; i< sources.Count; i++){
+            if(i == 0 ){
+                yield return new WaitForSeconds(resumeTime);
+            }
+            sources[i].UnPause();
+        }
     }
 }

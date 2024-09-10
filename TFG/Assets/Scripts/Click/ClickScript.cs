@@ -106,6 +106,7 @@ public class ClickScript : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        if(Time.timeScale != 0){
         for (int i = 0; i < keyCodeList.Count; i++)
         {
             if (Input.GetKeyDown(keyCodeList[i]))
@@ -145,6 +146,7 @@ public class ClickScript : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Space))
             createLevels = true;
+        }
     }
 
     /// <summary>

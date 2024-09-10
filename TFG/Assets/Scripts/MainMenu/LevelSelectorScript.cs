@@ -125,7 +125,7 @@ public class LevelSelectorScript : MonoBehaviour
     /// <summary>
     /// Read the first line of the actual level and reeds the metadata from it. The level is in .csv format.
     /// </summary>
-    private void loadLevelMetadata()
+    public void loadLevelMetadata()
     {
         List<PlayerInfo> playerInfos = leaderboard.ImportLeatherBoardLevel(worldsText[1].text + '-' + levelText.text);
         string line = File.ReadLines("./Assets/Levels/" + worldsText[1].text + '-' + levelText.text + ".csv", Encoding.UTF8).First();
@@ -138,6 +138,9 @@ public class LevelSelectorScript : MonoBehaviour
                 scoreValue.text = player.score + "";
                 break;
             }
+            else
+                scoreValue.text = 0 + "";
+
     }
 
     /// <summary>

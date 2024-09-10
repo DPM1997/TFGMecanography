@@ -93,6 +93,7 @@ public class MainMenuScript : MonoBehaviour
     public void submitUser()
     {
         PlayerPrefs.SetString("User", usernameField.text);
+        levelSelector.loadLevelMetadata();
     }
 
     /// <summary>
@@ -143,5 +144,12 @@ public class MainMenuScript : MonoBehaviour
                 break;
 
         }
+    }
+
+    /// <summary>
+    /// Function that exit the game
+    /// </summary>
+    public void exit(){
+        Application.Quit();
     }
 }
